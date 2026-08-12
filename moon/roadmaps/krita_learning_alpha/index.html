@@ -1,0 +1,2305 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation portal for Manga Colorization & Animation (HITL deep learning + mathematical optimization).">
+      
+      
+        <meta name="author" content="ACFHarbinger">
+      
+      
+      
+        <link rel="prev" href="../../ROADMAP/">
+      
+      
+        <link rel="next" href="../engine_architecture/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Krita Learning Alpha - Cel-Shaded-Generator Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#krita-anime-head-and-face-learning-alpha" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Cel-Shaded-Generator Documentation" class="md-header__button md-logo" aria-label="Cel-Shaded-Generator Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cel-Shaded-Generator Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Krita Learning Alpha
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ACFHarbinger/Cel-Shaded-Generator" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ACFHarbinger/Cel-Shaded-Generator
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../ARCHITECTURE/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Architecture
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../project_format/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Portable Project Format
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../style_bible_format/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Character Style Bible
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../model_packages/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Local Model Packages
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../DEVELOPMENT/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Development
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../TESTING/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Testing
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../DEPENDENCIES/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Dependencies
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../DEPENDENCY_POLICY/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Dependency Policy
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../DOCUMENTATION_STANDARDS/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Documentation Standards
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../BENCHMARKS/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Benchmarks
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../TROUBLESHOOTING/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Troubleshooting
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../GLOSSARY/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Glossary
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../adr/0001-record-architecture-decisions/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Architecture Decisions
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../ROADMAP/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Roadmap
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../CHANGELOG/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Changelog
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../research/Manga%20Colorization%20and%20Animation%20Research/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Research
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="https://github.com/ACFHarbinger/Image-Toolkit" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Image-Toolkit (parent project)
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Cel-Shaded-Generator Documentation" class="md-nav__button md-logo" aria-label="Cel-Shaded-Generator Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Cel-Shaded-Generator Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ACFHarbinger/Cel-Shaded-Generator" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ACFHarbinger/Cel-Shaded-Generator
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ARCHITECTURE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../project_format/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Portable Project Format
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../style_bible_format/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Character Style Bible
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../model_packages/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Local Model Packages
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DEVELOPMENT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../TESTING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DEPENDENCIES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dependencies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DEPENDENCY_POLICY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dependency Policy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DOCUMENTATION_STANDARDS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation Standards
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BENCHMARKS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benchmarks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../TROUBLESHOOTING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../GLOSSARY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_14" id="__nav_14_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture Decisions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Architecture Decisions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../adr/0001-record-architecture-decisions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Recording Decisions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../adr/0002-polyglot-module-layout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Superseded Polyglot Layout
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_15" id="__nav_15_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roadmap
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Roadmap
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ROADMAP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Master Roadmap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Krita Learning Alpha
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Krita Learning Alpha
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#goal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Goal
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#non-goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Non-goals
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#learning-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning method
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#curriculum-v1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Curriculum v1
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#review-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Review contract
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#krita-interaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Krita interaction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analysis-avenues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analysis avenues
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#progress-measurement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Progress measurement
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delivery-milestones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Delivery milestones
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Delivery milestones">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a1-plugin-skeleton-and-local-data-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A1 — plugin skeleton and local data model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a2-lesson-and-overlay-vertical-slice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A2 — lesson and overlay vertical slice
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../engine_architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Engine Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference_coloring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference Coloring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../anime_animation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Anime Animation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../game_assets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Game Assets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CHANGELOG/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_17" >
+        
+          
+          <label class="md-nav__link" for="__nav_17" id="__nav_17_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Research
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_17_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_17">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Research
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../research/Manga%20Colorization%20and%20Animation%20Research/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Manga Colorization & Animation Research
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../research/Cel-Shaded%20Art%20Assistant%20Research/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cel-Shaded Art Assistant Research
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/ACFHarbinger/Image-Toolkit" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Image-Toolkit (parent project)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#goal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Goal
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#non-goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Non-goals
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#learning-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning method
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#curriculum-v1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Curriculum v1
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#review-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Review contract
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#krita-interaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Krita interaction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analysis-avenues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analysis avenues
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#progress-measurement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Progress measurement
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delivery-milestones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Delivery milestones
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Delivery milestones">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a1-plugin-skeleton-and-local-data-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A1 — plugin skeleton and local data model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a2-lesson-and-overlay-vertical-slice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A2 — lesson and overlay vertical slice
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="krita-anime-head-and-face-learning-alpha">Krita Anime Head-and-Face Learning Alpha</h1>
+<h2 id="goal">Goal</h2>
+<p>Help a returning complete beginner measurably improve anime head-and-face
+construction through a fixed curriculum with adaptive remedial exercises. The
+alpha runs offline on Kubuntu/KDE inside Krita and analyzes work only when the
+artist requests a review.</p>
+<h2 id="non-goals">Non-goals</h2>
+<ul>
+<li>A complete standalone drawing application.</li>
+<li>Full-body anatomy, finished illustration, animation, or game-asset courses.</li>
+<li>Continuous surveillance or unsolicited live critique.</li>
+<li>Replacing the drawing with model output.</li>
+<li>Supporting multiple construction schools in the first release.</li>
+<li>Accounts, cloud sync, browser, or mobile clients.</li>
+</ul>
+<h2 id="learning-method">Learning method</h2>
+<p>Start with one documented construction method so lessons and evaluation share
+consistent assumptions. Preserve the method identifier and rubric version in
+every exercise result so additional styles can be added later without making
+old progress incomparable.</p>
+<p>The fixed curriculum establishes progression; adaptive exercises target a
+weakness detected during review. Explanations may include text, diagrams,
+step-by-step overlays, animated demonstrations, examples, and links between
+related concepts. Media is packaged locally.</p>
+<h2 id="curriculum-v1">Curriculum v1</h2>
+<ol>
+<li>Circle, jaw, centerline, and eye-line construction.</li>
+<li>Front, profile, and three-quarter head orientation.</li>
+<li>Cranial volume and jaw variation without losing perspective.</li>
+<li>Eye placement, scale, and perspective compression.</li>
+<li>Nose, mouth, ear, and hairline placement.</li>
+<li>Intentional symmetry and asymmetry.</li>
+<li>Feature variation while retaining construction.</li>
+<li>Simple value grouping and two-tone cel-shaded lighting on the head.</li>
+<li>Review exercise combining construction, features, and simple shading.</li>
+</ol>
+<h2 id="review-contract">Review contract</h2>
+<p>Each review returns structured evidence rather than a single opaque score:</p>
+<ul>
+<li>observation and affected region;</li>
+<li>confidence and evidence source (<code>geometry</code>, <code>heuristic</code>, or <code>model</code>);</li>
+<li>explanation of the underlying art principle;</li>
+<li>redline geometry on separate named Krita layers;</li>
+<li>one or more non-destructive suggestions where appropriate;</li>
+<li>a targeted exercise and completion criterion;</li>
+<li>rubric measurements that can be compared with later attempts.</li>
+</ul>
+<p>Low-confidence feedback must say so. The artist can mark advice as helpful,
+incorrect, or not applicable; that feedback is retained locally only when
+progress storage is enabled.</p>
+<h2 id="krita-interaction">Krita interaction</h2>
+<ul>
+<li>A lesson docker shows the current step, references, demonstrations, and
+  completion checklist.</li>
+<li>“Review” captures the selected exercise layer plus declared construction
+  metadata and submits an immutable analysis job.</li>
+<li>Results appear as togglable redline, construction, annotation, and suggestion
+  layers grouped above the artist's work.</li>
+<li>Suggestions are previews until accepted. Accept/reject/cycle shortcuts are
+  configurable and acceptance becomes one undoable document command.</li>
+<li>No artwork is stored in progress history unless separately opted in. By
+  default, retain rubric values, exercise/version identifiers, timestamps, and
+  artist feedback without image content.</li>
+</ul>
+<h2 id="analysis-avenues">Analysis avenues</h2>
+<p>Implement these behind a shared result schema and compare them empirically:</p>
+<ol>
+<li><strong>Deterministic geometry:</strong> user-assisted or detected landmarks, ellipse and
+   centerline fitting, ratios, symmetry, perspective consistency, and angle
+   relationships. Most explainable and suitable for early lessons.</li>
+<li><strong>Learned landmark analysis:</strong> a locally deployed line-art/keypoint model
+   proposes construction landmarks and confidence. The artist can correct the
+   landmarks before accepting the critique.</li>
+<li><strong>Vision-language critique:</strong> optional later model generates richer
+   explanations from rubric measurements and cropped evidence. It may not be
+   the sole source of geometry claims.</li>
+<li><strong>Reference comparison:</strong> compare against lesson exemplars using aligned
+   landmarks and structural features, never raw pixel similarity alone.</li>
+</ol>
+<p>Begin with deterministic geometry plus explicit artist landmark correction.
+This yields auditable feedback before enough suitable data exists for a robust
+anime-specific evaluator.</p>
+<h2 id="progress-measurement">Progress measurement</h2>
+<p>The primary experiment is repeated-attempt improvement:</p>
+<ol>
+<li>Complete a baseline attempt without corrective overlay.</li>
+<li>Request review and consume the explanation.</li>
+<li>Complete a targeted remedial exercise.</li>
+<li>Redraw the original prompt without tracing the correction.</li>
+<li>Compare rubric changes and ask the artist whether the explanation helped.</li>
+</ol>
+<p>Candidate rubric dimensions include head-axis consistency, feature placement,
+perspective compression, cranial/jaw proportion, construction-line use, and
+value grouping. Rubric calibration needs human review; numerical precision is
+not evidence of pedagogical validity.</p>
+<h2 id="delivery-milestones">Delivery milestones</h2>
+<h3 id="a1-plugin-skeleton-and-local-data-model">A1 — plugin skeleton and local data model</h3>
+<p><strong>Status: complete.</strong> The next implementation milestone is A2.</p>
+<ul>
+<li>✅ Krita 5.2+ and Python 3.10+ documented for Kubuntu. The inspected Krita
+  5.2.11 Snap omits Python plugin support and is explicitly rejected. The
+  checksum-verified official Krita 5.3.2.1 AppImage contains <code>pykrita</code>, Scripter,
+  and the plugin importer; the plugin was enabled and its docker displayed in a
+  live session. Krita disables all docker actions until a document is open, an
+  important discovery note for the onboarding flow.</li>
+<li>✅ Scoped install/uninstall tooling and privacy-safe plugin self-diagnostics.</li>
+<li>✅ Versioned lesson, exercise, rubric, review, and progress schemas with
+  atomic catalog persistence, deterministic v0 migration, and future-version
+  rejection.</li>
+<li>✅ Opt-in settings contracts for progress, artwork retention, and model use.</li>
+<li>✅ Local model registry with built-in/community/unverified labels, atomic
+  persistence, and non-executing manifest, path, size, symlink, and SHA-256
+  validation. Integrity and provenance remain explicitly separate.</li>
+</ul>
+<h3 id="a2-lesson-and-overlay-vertical-slice">A2 — lesson and overlay vertical slice</h3>
+<p><strong>Status:</strong> deployed lesson/review slice is in owner-deferred review in issue</p>
+<h1 id="10-suggestion-decisions-and-persistence-continue-in-issue-11">10; suggestion decisions and persistence continue in issue #11.</h1>
+<ul>
+<li>🔄 One front-view construction lesson with locally packaged explanations;
+  the five-stage beginner lesson is deployed.</li>
+<li>🔄 Exercise template creation in Krita; the tested adapter creates an unsaved
+  1600 × 2000 document with separate construction, artwork, and locked tutor
+  feedback layers. Live host verification remains.</li>
+<li>🔄 Manual landmark placement and deterministic review; the host-neutral core
+  now validates normalized artist-confirmed landmarks and measures centerline,
+  eye-line, chin centering, and jaw symmetry. A versioned bounded JSON process
+  protocol and defensive Krita client now cross the AppImage/engine boundary
+  without imports or shell execution. A projection-snapshot editor collects nine
+  ordered points with undo/reset and derives normalized review landmarks without
+  private canvas internals. Atomic XDG engine configuration and review submission
+  now display the returned explanations; redline rendering remains.</li>
+<li>🔄 Structured redline layers and configurable accept/reject interaction. The
+  Krita 5.x adapter rasterizes validated normalized geometry into a new locked
+  tutor-owned preview without touching artwork. Explicit idempotent buttons
+  accept it as a locked reference or reject only the owned preview. Unique
+  shortcuts are opt-in and atomically persisted; none is assigned by default
+  because Tab belongs to Krita. Failed decision persistence retains a same-action
+  retry state and blocks the opposite decision. Owner review remains in #11.</li>
+<li>🔄 Save, reload, migration, and failure recovery: portable schema v4 persists
+  privacy-safe review versions, measurements, explanations, and final decisions
+  plus one final structured advice rating and optional local note, with
+  deterministic v0/v1/v2/v3 migration and recovery coverage. Project-local
+  learning retention is a setting enabled by default; artwork history and
+  global aggregation remain independently disabled by default. The Krita adapter
+  now binds an empty directory to <code>project.json</code> plus
+  <code>artwork/attempt-001.kra</code>, and engine operations atomically record the review
+  and decision. Automated implementation is complete; live verification is
+  owner-deferred in issues #10 and #11.</li>
+</ul>
+<h3 id="a3-curriculum-and-adaptive-remediation">A3 — curriculum and adaptive remediation</h3>
+<p><strong>Status: in progress — issue #12.</strong> Core work proceeds while A2 owner checks
+remain deferred in Review.</p>
+<ul>
+<li>🔄 Curriculum v1 content: the versioned core catalog now defines all nine
+  primary anime head-and-face exercises plus four focused remedial exercises.
+  All nine primary lessons are now fully authored. Head orientation includes spatial theory, seven
+  construction stages, three drills, five diagnosed common mistakes, measurable
+  completion criteria, self-review, and delayed repetition. The third lesson
+  separates stable cranial mass from controlled jaw variables, age/design
+  tendencies, and perspective effects with the same instructional depth and two
+  original SVGs. Rich-media expansion and calibration remain. The
+  existing docker now provides an ordered selector, Previous/Next navigation,
+  and selectable scalable SVG diagrams for authored lessons without locking
+  later content.</li>
+<li>🔄 Eye-placement curriculum/template: lesson four is fully authored as a
+  beginner front-to-three-quarter progression, beginning with eyeballs, sockets,
+  and cross-contours before stylized lids and expression. Two offline diagrams
+  and a 2400 × 1600 four-layer Krita sheet separate front structure, front
+  style/expression, turned structure, and turned style/expression. Its dedicated
+  active-layer workflow uses explicit confirmation and a cropped 16-landmark
+  session. Separate versioned structure and style/expression rubrics measure
+  cross-contour adherence, centerline-based spacing, projected scale, eyelid
+  rhythm, and iris-exposure consistency with auditable raw values. Thresholds
+  remain provisional. Failed dimensions now emit conservative, principle-linked
+  guides for cross-contour corners, axis-relative spacing, projected width, lid
+  opening, and iris exposure into only the confirmed quarter-sheet cell. They
+  reuse explicit Accept/Reject and warn that targets are comparisons rather than
+  tracing mandates; existing head rubrics are never silently reused.</li>
+<li>🔄 Feature-placement curriculum/template: lesson five is fully authored as a
+  front-to-three-quarter nose, mouth, and ear progression. Muzzle volume precedes
+  anime nose marks; mouth center/corners/opening wrap around that volume; ears
+  receive equal treatment as attached cups with bounds, axes, rims, bowls,
+  projection, and occlusion. Two offline diagrams and a 2400 × 1800 six-layer
+  Krita matrix give each feature family equal front/turned practice space.
+  Every layer now has a specialized landmark workflow and feature-specific
+  rubric. Front ears are reviewed bilaterally; turned-ear review fully evaluates
+  the near ear while far-ear input is only occlusion evidence. After all six
+  studies, an optional combined review compares nose, mouth, ear, and expression
+  retention across views. Raw and normalized results support compatible retry
+  comparisons. Failed dimensions now generate feature-specific guides for axes,
+  bases/corners, projection, muzzle support, bilateral ear structure, near-ear
+  attachment, and far-ear occlusion evidence. A row-major transform confines
+  each preview to the confirmed matrix cell and reuses Accept/Reject persistence.</li>
+<li>🔄 Controlled-asymmetry curriculum/template: lesson six is fully authored
+  around a corrected symmetric control, explicit cause labels, one-variable
+  strength ladders, expression isolation, and front-to-three-quarter transfer.
+  It distinguishes anatomical/design, expression, perspective, and accidental
+  asymmetry and tracks character-side identity through rotation. Two offline
+  diagrams and a 2600 × 1800 six-layer sheet separate control, corrected drift,
+  persistent design, expression, symmetric turn, and transferred asymmetry.
+  A shared 14-point contract compares every later study directly with its front
+  control, except transferred asymmetry uses the symmetric turned control.
+  Intent cause, character side, strength, and purpose are mandatory for design,
+  expression, and transfer layers and optional for controls/corrected drift.
+  Labels persist as artist-confirmation evidence; numeric retention, side, and
+  strength dimensions support compatible retries. Failed dimensions now emit
+  control-derived cranial, feature-span, ear-height, side, and strength guides;
+  turned candidates use perspective-adjusted targets. Previews stay within the
+  confirmed 3 × 2 cell and reuse Accept/Reject persistence.</li>
+<li>🔄 Character-variation curriculum/template: lesson seven is fully authored
+  around explicit identity anchors versus declared proportion, feature-shape,
+  age/style, and shape-language variables. It tests an undecorated lineup,
+  five-to-eight-anchor identity card, fresh front reconstruction, and selected
+  three-quarter identity transfer without tracing. Two offline diagrams and a
+  2600 × 1800 six-layer model sheet cover baseline, three variation families,
+  selected front reconstruction, and turned identity check. Schema v5 stores an
+  editable five-to-eight-anchor card in each portable project: every anchor has
+  a normalized value and required description, with independent edit-history
+  retention off by default. Variants compare descriptively with baseline;
+  selected front compares with baseline and selected turned directly with front.
+  Card adherence and retention remain numeric while card revision is auditable
+  artist-confirmation evidence. Selected front/turned failures now offer
+  tutor-owned identity-retention guides mapped into the reviewed sheet cell;
+  variants remain descriptive and unranked.</li>
+<li>🔄 Cel-value curriculum/template: lesson eight is fully authored around an
+  explicit light statement, plane-facing map, two-value grouping, form/cast
+  causes, subordinate third values, identity preservation, and front-to-turned
+  lighting consistency. Two offline diagrams and a 2600 × 1800 six-layer sheet
+  cover the plane map, masks, cast-shadow audit, third-value pass, turned transfer,
+  and consistency. The first dedicated review reads explicit alpha-only front
+  and turned binary-shadow layers plus an optional third-value accent layer,
+  after the artist confirms light direction and boundary hardness. Bounded
+  local analysis reports area balance, fragmentation, isolated islands, edge
+  complexity, front/turned consistency, and subordinate third-value area. Front
+  and turned form/cast shadows now occupy four separate named layers: category
+  measurements remain auditable while their union supplies the large-family
+  read. Empty form masks are rejected; intentionally empty cast masks are valid.
+  Pixels and colors are discarded; only scalar measurements persist. Spatial
+  light-cause review and beginner calibration remain future work. Explanations
+  explicitly distinguish descriptive occupancy/consistency evidence from a
+  universal target, and evaluator failures now route to four authored remedial
+  prompts: consolidation, island-cause audit, light transfer, or third-value
+  restraint.</li>
+<li>🔄 Comprehensive capstone: lesson nine integrates brief, portable identity
+  card, front/turned construction, expression, controlled asymmetry, cel values,
+  review decisions, prioritized correction, compatible comparison, and delayed
+  repetition. Two diagrams and a 3200 × 2000 six-layer sheet preserve initial,
+  correction, and final evidence. Reviews never auto-complete it; every preview
+  remains an explicit artist decision and checklist completion stays manual.
+  Schema v6 requires a written rationale for every accepted, rejected, or
+  deferred capstone suggestion. The existing progress view aggregates capstone
+  attempt/review/pending counts while retaining each latest rubric, version,
+  measurement set, decision, and rationale; it deliberately has no overall
+  artist score. A resumable collection plan now covers front structure, turned
+  structure, identity retention, expression/asymmetry, and cel-value grouping,
+  identifies missing versus pending-decision evidence, and names the next exact
+  capstone layer. It never marks the exercise complete. Direct one-action host
+  collection and live confirmation remain.
+  Schema v7 makes rationale text editable without changing the final decision.
+  Timestamped prior text revisions use an independent project-local retention
+  setting that defaults off; rationale content never enters the global learner
+  profile. Existing-docker policy and edit controls are implemented headlessly;
+  live confirmation remains.
+  Schema v8 permits compatible earlier-lesson evidence imports without mutating
+  the source. Each import records source attempt/review provenance, creates a new
+  capstone-local review, and requires a fresh decision/rationale. “Run Next
+  Capstone Review” confirms and selects the exact drawing layer inside six
+  rubric-oriented groups, offers compatible evidence when available, and
+  otherwise starts fresh collection. Fresh dispatch runs front structure,
+  turned structure, identity retention, expression/asymmetry, and cel values in
+  structural-leverage order; multi-rubric layers use sequential rubric-specific
+  dialogs rather than pretending their landmark contracts are interchangeable.
+  Dedicated capstone form/cast/optional-third-value mask layers support the last
+  stage. A finalized decision automatically advances; cancellation preserves a
+  pending review when already saved. A proactive code review found that
+  cancelling the inline decision or rationale dialog left the rendered
+  preview layer orphaned with no supported way to resolve it (the review
+  record was preserved, but not the preview); fixed by assigning the
+  preview to the dock's own Accept/Reject Preview buttons as a fallback,
+  and by adding the file's usual <code>try</code>/<code>except</code> guards around the
+  save/decide calls. Live confirmation remains.</li>
+<li>🔄 Head-orientation exercise template: the docker creates a 2600 × 1600
+  landscape rotation sheet with five labeled work areas and separate layers for
+  left profile, left three-quarter, front, right three-quarter, and right
+  profile. The locked vector layout is separate from artist layers. The active
+  named layer selects one head, the docker asks for confirmation, and the dialog
+  crops to that work area. Profiles and three-quarter views have distinct manual
+  landmark prompts and deterministic review contracts. Provisional tolerances
+  still require calibration with real beginner drawings; front orientation uses
+  the separately calibrated front workflow rather than pretending all views
+  share evidence.</li>
+<li>🔄 Cranial-volume/jaw design exercise: the docker creates a 2800 × 1600
+  landscape sheet with four front-design columns and a fifth right
+  three-quarter reconstruction area. Each work area is a separate named layer
+  beneath a locked vector layout. The active layer alone controls individual
+  review. After recording one chosen front design and the turned reconstruction,
+  the artist may explicitly request a separate paired consistency review for
+  cranial mass, lower-face length, jaw character, chin alignment, and appropriate
+  perspective adjustment. Raw ratios and normalized scores remain auditable;
+  thresholds are provisional until beginner drawings calibrate them.</li>
+<li>✅ Orientation review geometry is returned in selected-head coordinates and
+  mapped into only the confirmed sheet cell before rasterization. Failed rubric
+  dimensions produce tutor-owned preview guides that reuse the explicit
+  accept/reject, locking, persistence, and artist-layer isolation contract.</li>
+<li>✅ Prerequisites control only the recommended next exercise. All lesson
+  content remains browsable so the tutor never turns progression into a lock.</li>
+<li>✅ Completion is an explicit, reversible artist action after consulting the
+  checklist. Review evidence is shown separately and never auto-completes an
+  exercise; repeated identical marks are idempotent and atomically persisted.</li>
+<li>✅ Completing the front attempt changes the engine's recommended next
+  exercise to head orientation immediately. This recommendation is displayed in
+  Project Progress and does not change the manually selected lesson.</li>
+<li>🔄 Rubrics for all supported views: stable normalized dimensions now cover
+  axes, jaw/chin structure, perspective compression, feature placement, and
+  value grouping. Profile and three-quarter evaluators now measure centerline
+  placement, far-side compression/depth, chin alignment, cross-contour
+  consistency, jaw attachment, and preserved cranial volume. Their provisional
+  thresholds remain explicitly uncalibrated pending owner/beginner evidence.</li>
+<li>✅ Deterministic prerequisite progression and explainable
+  weakness-to-remedial-exercise routing, including stable tie-breaking and
+  explicit treatment of missing evidence as unknown rather than failure.</li>
+<li>🔄 Progress dashboard comparing attempts without ranking the artist globally:
+  the core now reports improved, unchanged, and declined dimensions only for
+  matching exercise, method, and rubric versions. It also reports retry count,
+  unrated advice, and the number of incompatible pairs it intentionally skipped.
+  Project persistence is complete. The existing tutor docker now shows attempts,
+  reviews, latest compatible improvement/decline trends, and optionally raw
+  normalized values. Raw values default visible and the preference is atomic.
+  Live host presentation remains unverified.</li>
+<li>🔄 Feedback reporting for incorrect or unhelpful advice: the private summary
+  distinguishes helpful, unhelpful, incorrect, not-applicable, and unrated
+  reviews, rejects contradictory classifications, and creates no aggregate
+  artist score. Schema v4 persists an editable classification and optional note
+  directly in each portable project with atomic recovery. Revision-history
+  retention is configurable and defaults off; the note limit is configurable
+  from 1 to 100,000 characters and defaults to 2,000. Rating/note controls and
+  policy settings now live in the existing docker; live confirmation remains.</li>
+<li>🔄 Retention controls live in the existing tutor docker. Users may keep
+  retention enabled, explicitly clear history and disable it, or re-enable it;
+  a project with history cannot be disabled through the engine without the
+  explicit clear flag. Live host confirmation remains.</li>
+</ul>
+<h3 id="a4-evaluator-assistance-and-alpha-study">A4 — evaluator assistance and alpha study</h3>
+<p>Tracked by GitHub issue #14; it remains in Backlog until A3 integration and the
+deferred A2 live checks are ready for evidence collection.</p>
+<p>A3 headless integration is complete and issue #12 is now in deferred Review
+with an exact pass-to-Done/fail-to-In-Progress live checklist. The candidate is
+not deployed. A4 begins only after the relevant live checks are intentionally
+scheduled; it does not reinterpret untested headless behavior as accepted.</p>
+<p>A4-prep issue #20 built only the data-model infrastructure the study will
+need once that gate opens, mirroring how C1's portable contract preceded
+C3's Docker: project schema v11 adds a <code>StudyConsent</code>/<code>StudySession</code> record
+(explicit revocable opt-in; a session per baseline attempt accumulating
+remedial exercise, redraw attempt, and an explanation-usefulness rating as
+the baseline/review/remedial/redraw protocol progresses, reusing the
+existing <code>AdviceRating</code> enum rather than inventing a ranking). No Docker/UI
+surface exists yet, so #20 needed no live check and is Done. Issue #14
+itself remains <strong>Backlog</strong> until live checks are intentionally scheduled.</p>
+<ul>
+<li>Optional local landmark model with confidence visualization.</li>
+<li>RTX 4080 12 GB as the deployment ceiling for the default model; the RTX 3090
+  Ti 24 GB may be used for development but not as the minimum requirement.</li>
+<li>Latency, VRAM, correctness, and explanation-quality evaluation.</li>
+<li>Small beginner study using repeated attempts.</li>
+</ul>
+<h2 id="alpha-release-gates">Alpha release gates</h2>
+<ul>
+<li>Fresh Kubuntu/Krita installation succeeds from documented steps.</li>
+<li>All analysis works offline after explicit model/content installation.</li>
+<li>Median requested review reaches an interactive target defined by benchmarks;
+  cancellation never corrupts the Krita document.</li>
+<li>Advice has region-level evidence and uncertainty, and can be reported.</li>
+<li>Participants show improvement on held-out repeat prompts more often than an
+  agreed baseline and rate explanations as useful.</li>
+<li>No suggestion modifies original artwork without acceptance; every accepted
+  operation is undoable.</li>
+</ul>
+<p>Exact numerical thresholds must be chosen during A2 after a pilot establishes
+honest baselines, rather than invented in advance.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "navigation.indexes", "search.highlight", "search.suggest", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,3138 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation portal for Manga Colorization & Animation (HITL deep learning + mathematical optimization).">
+      
+      
+        <meta name="author" content="ACFHarbinger">
+      
+      
+      
+        <link rel="prev" href="../../moon/CHANGELOG/">
+      
+      
+        <link rel="next" href="../Cel-Shaded%20Art%20Assistant%20Research/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Manga Colorization & Animation Research - Cel-Shaded-Generator Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#manga-colorization-and-animation-deep-learning-and-mathematical-optimization-a-unified-research-report" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Cel-Shaded-Generator Documentation" class="md-header__button md-logo" aria-label="Cel-Shaded-Generator Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cel-Shaded-Generator Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Manga Colorization & Animation Research
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ACFHarbinger/Cel-Shaded-Generator" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ACFHarbinger/Cel-Shaded-Generator
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../ARCHITECTURE/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Architecture
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../project_format/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Portable Project Format
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../style_bible_format/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Character Style Bible
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../model_packages/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Local Model Packages
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../DEVELOPMENT/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Development
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../TESTING/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Testing
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../DEPENDENCIES/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Dependencies
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../DEPENDENCY_POLICY/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Dependency Policy
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../DOCUMENTATION_STANDARDS/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Documentation Standards
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../BENCHMARKS/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Benchmarks
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../TROUBLESHOOTING/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Troubleshooting
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../GLOSSARY/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Glossary
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../adr/0001-record-architecture-decisions/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Architecture Decisions
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../moon/ROADMAP/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Roadmap
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../moon/CHANGELOG/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Changelog
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Research
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="https://github.com/ACFHarbinger/Image-Toolkit" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Image-Toolkit (parent project)
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Cel-Shaded-Generator Documentation" class="md-nav__button md-logo" aria-label="Cel-Shaded-Generator Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Cel-Shaded-Generator Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ACFHarbinger/Cel-Shaded-Generator" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ACFHarbinger/Cel-Shaded-Generator
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ARCHITECTURE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../project_format/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Portable Project Format
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../style_bible_format/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Character Style Bible
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model_packages/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Local Model Packages
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DEVELOPMENT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TESTING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DEPENDENCIES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dependencies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DEPENDENCY_POLICY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dependency Policy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DOCUMENTATION_STANDARDS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation Standards
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../BENCHMARKS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benchmarks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TROUBLESHOOTING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GLOSSARY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_14" id="__nav_14_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture Decisions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Architecture Decisions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/0001-record-architecture-decisions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Recording Decisions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/0002-polyglot-module-layout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Superseded Polyglot Layout
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_15" id="__nav_15_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roadmap
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Roadmap
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../moon/ROADMAP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Master Roadmap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../moon/roadmaps/krita_learning_alpha/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Krita Learning Alpha
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../moon/roadmaps/engine_architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Engine Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../moon/roadmaps/reference_coloring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference Coloring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../moon/roadmaps/anime_animation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Anime Animation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../moon/roadmaps/game_assets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Game Assets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../moon/CHANGELOG/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_17" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_17" id="__nav_17_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Research
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_17_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_17">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Research
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Manga Colorization & Animation Research
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Manga Colorization & Animation Research
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-pre-processing-and-semantic-extraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Pre-Processing and Semantic Extraction
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Pre-Processing and Semantic Extraction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-text-detection-segmentation-and-inpainting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Text Detection, Segmentation, and Inpainting
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-line-art-extraction-and-screentone-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Line Art Extraction and Screentone Management
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-deep-learning-architectures-for-reference-guided-colorization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Deep Learning Architectures for Reference-Guided Colorization
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Deep Learning Architectures for Reference-Guided Colorization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-latent-diffusion-models-and-dual-branch-u-net-frameworks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Latent Diffusion Models and Dual-Branch U-Net Frameworks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-manganinja-patch-shuffling-and-point-driven-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 MangaNinja: Patch Shuffling and Point-Driven Control
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-colorflow-retrieval-augmented-sequence-colorization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 ColorFlow: Retrieval-Augmented Sequence Colorization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-mangadit-hierarchical-attention-in-diffusion-transformers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 MangaDiT: Hierarchical Attention in Diffusion Transformers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-sketchdeco-and-instanceanimator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 SketchDeco and InstanceAnimator
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-generative-animation-synthesizing-video-from-still-panels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Generative Animation: Synthesizing Video from Still Panels
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Generative Animation: Synthesizing Video from Still Panels">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-diffusion-transformers-dit-and-flow-matching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Diffusion Transformers (DiT) and Flow Matching
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-tooncomposer-unified-post-keyframing-and-spatial-low-rank-adapters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 ToonComposer: Unified Post-Keyframing and Spatial Low-Rank Adapters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-live2d-and-automated-ai-rigging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Live2D and Automated AI Rigging
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-mathematical-optimization-for-colorization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Mathematical Optimization for Colorization
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Mathematical Optimization for Colorization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-the-quadratic-cost-formulation-and-sparse-linear-systems-levin-et-al" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 The Quadratic Cost Formulation and Sparse Linear Systems (Levin et al.)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-overcoming-manga-modalities-screentone-pattern-continuity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Overcoming Manga Modalities: Screentone Pattern Continuity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-reference-based-colorization-graph-correspondence-and-quadratic-programming" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Reference-Based Colorization: Graph Correspondence and Quadratic Programming
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-optimal-transport-and-the-sinkhorn-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 Optimal Transport and the Sinkhorn Algorithm
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-mathematical-optimization-in-spatio-temporal-animation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Mathematical Optimization in Spatio-Temporal Animation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Mathematical Optimization in Spatio-Temporal Animation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-spatio-temporal-color-propagation-and-graph-cuts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Spatio-Temporal Color Propagation and Graph Cuts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-mesh-based-deformation-as-rigid-as-possible-arap-and-live2d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Mesh-Based Deformation: As-Rigid-As-Possible (ARAP) and Live2D
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-iterative-alignment-via-dpo-and-reinforcement-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Iterative Alignment via DPO and Reinforcement Learning
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Iterative Alignment via DPO and Reinforcement Learning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-the-transition-to-direct-preference-optimization-dpo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 The Transition to Direct Preference Optimization (DPO)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-advanced-dpo-frameworks-curriculum-dpo-dspo-and-localdpo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Advanced DPO Frameworks: Curriculum DPO, DSPO, and LocalDPO
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-implementing-feedback-via-lora-adaptation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Implementing Feedback via LoRA Adaptation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-spatial-low-rank-adapters-and-point-driven-constraint-vectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 Spatial Low-Rank Adapters and Point-Driven Constraint Vectors
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-datasets-and-evaluation-benchmarks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Datasets and Evaluation Benchmarks
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Datasets and Evaluation Benchmarks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-the-sakuga-42m-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 The Sakuga-42M Dataset
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-quantitative-evaluation-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Quantitative Evaluation Metrics
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-human-in-the-loop-workflows-and-client-side-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Human-in-the-Loop Workflows and Client-Side Architecture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Human-in-the-Loop Workflows and Client-Side Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-visual-programming-comfyui-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Visual Programming (ComfyUI Workflows)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-interactive-canvas-editors-and-multiply-blend-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Interactive Canvas Editors and Multiply Blend Modes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-accelerating-feedback-with-quadtree-decomposition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 Accelerating Feedback with Quadtree Decomposition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#94-remotion-and-react-based-timelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.4 Remotion and React-Based Timelines
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#95-webgpu-onnx-runtime-web-and-client-side-ai-economics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.5 WebGPU, ONNX Runtime Web, and Client-Side AI Economics
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Conclusion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#works-cited" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Works Cited
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Works Cited">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#from-the-deep-learning-research-pass" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        From the deep-learning research pass
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-the-mathematical-optimization-research-pass" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        From the mathematical-optimization research pass
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Cel-Shaded%20Art%20Assistant%20Research/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cel-Shaded Art Assistant Research
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/ACFHarbinger/Image-Toolkit" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Image-Toolkit (parent project)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-pre-processing-and-semantic-extraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Pre-Processing and Semantic Extraction
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Pre-Processing and Semantic Extraction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-text-detection-segmentation-and-inpainting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Text Detection, Segmentation, and Inpainting
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-line-art-extraction-and-screentone-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Line Art Extraction and Screentone Management
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-deep-learning-architectures-for-reference-guided-colorization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Deep Learning Architectures for Reference-Guided Colorization
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Deep Learning Architectures for Reference-Guided Colorization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-latent-diffusion-models-and-dual-branch-u-net-frameworks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Latent Diffusion Models and Dual-Branch U-Net Frameworks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-manganinja-patch-shuffling-and-point-driven-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 MangaNinja: Patch Shuffling and Point-Driven Control
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-colorflow-retrieval-augmented-sequence-colorization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 ColorFlow: Retrieval-Augmented Sequence Colorization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-mangadit-hierarchical-attention-in-diffusion-transformers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 MangaDiT: Hierarchical Attention in Diffusion Transformers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-sketchdeco-and-instanceanimator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 SketchDeco and InstanceAnimator
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-generative-animation-synthesizing-video-from-still-panels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Generative Animation: Synthesizing Video from Still Panels
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Generative Animation: Synthesizing Video from Still Panels">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-diffusion-transformers-dit-and-flow-matching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Diffusion Transformers (DiT) and Flow Matching
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-tooncomposer-unified-post-keyframing-and-spatial-low-rank-adapters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 ToonComposer: Unified Post-Keyframing and Spatial Low-Rank Adapters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-live2d-and-automated-ai-rigging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Live2D and Automated AI Rigging
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-mathematical-optimization-for-colorization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Mathematical Optimization for Colorization
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Mathematical Optimization for Colorization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-the-quadratic-cost-formulation-and-sparse-linear-systems-levin-et-al" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 The Quadratic Cost Formulation and Sparse Linear Systems (Levin et al.)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-overcoming-manga-modalities-screentone-pattern-continuity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Overcoming Manga Modalities: Screentone Pattern Continuity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-reference-based-colorization-graph-correspondence-and-quadratic-programming" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Reference-Based Colorization: Graph Correspondence and Quadratic Programming
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-optimal-transport-and-the-sinkhorn-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 Optimal Transport and the Sinkhorn Algorithm
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-mathematical-optimization-in-spatio-temporal-animation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Mathematical Optimization in Spatio-Temporal Animation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Mathematical Optimization in Spatio-Temporal Animation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-spatio-temporal-color-propagation-and-graph-cuts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Spatio-Temporal Color Propagation and Graph Cuts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-mesh-based-deformation-as-rigid-as-possible-arap-and-live2d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Mesh-Based Deformation: As-Rigid-As-Possible (ARAP) and Live2D
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-iterative-alignment-via-dpo-and-reinforcement-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Iterative Alignment via DPO and Reinforcement Learning
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Iterative Alignment via DPO and Reinforcement Learning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-the-transition-to-direct-preference-optimization-dpo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 The Transition to Direct Preference Optimization (DPO)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-advanced-dpo-frameworks-curriculum-dpo-dspo-and-localdpo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Advanced DPO Frameworks: Curriculum DPO, DSPO, and LocalDPO
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-implementing-feedback-via-lora-adaptation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Implementing Feedback via LoRA Adaptation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-spatial-low-rank-adapters-and-point-driven-constraint-vectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 Spatial Low-Rank Adapters and Point-Driven Constraint Vectors
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-datasets-and-evaluation-benchmarks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Datasets and Evaluation Benchmarks
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Datasets and Evaluation Benchmarks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-the-sakuga-42m-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 The Sakuga-42M Dataset
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-quantitative-evaluation-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Quantitative Evaluation Metrics
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-human-in-the-loop-workflows-and-client-side-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Human-in-the-Loop Workflows and Client-Side Architecture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Human-in-the-Loop Workflows and Client-Side Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-visual-programming-comfyui-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Visual Programming (ComfyUI Workflows)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-interactive-canvas-editors-and-multiply-blend-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Interactive Canvas Editors and Multiply Blend Modes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-accelerating-feedback-with-quadtree-decomposition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 Accelerating Feedback with Quadtree Decomposition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#94-remotion-and-react-based-timelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.4 Remotion and React-Based Timelines
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#95-webgpu-onnx-runtime-web-and-client-side-ai-economics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.5 WebGPU, ONNX Runtime Web, and Client-Side AI Economics
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Conclusion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#works-cited" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Works Cited
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Works Cited">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#from-the-deep-learning-research-pass" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        From the deep-learning research pass
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-the-mathematical-optimization-research-pass" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        From the mathematical-optimization research pass
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="manga-colorization-and-animation-deep-learning-and-mathematical-optimization-a-unified-research-report">Manga Colorization and Animation: Deep Learning and Mathematical Optimization — A Unified Research Report</h1>
+<h2 id="1-introduction"><strong>1. Introduction</strong></h2>
+<p>The automation of the manga and webtoon colorization and animation pipeline occupies a highly specialized and technically demanding intersection of computer vision, generative artificial intelligence, mathematical optimization, and human-computer interaction. Historically, the colorization and translation of static, black-and-white line art into animated cel-sequences has been an exceptionally labor-intensive and capital-heavy endeavor. Professional production environments have relied on colorists and animators to manually execute storyboard adaptation, keyframing, masking, flatting, shading, and in-betweening.</p>
+<p>The global anime and manga industry has experienced exponential expansion, evolving into a market valued at over $30 billion, placing immense strain on these traditional production pipelines. Two broad technical paradigms have emerged to relieve this bottleneck, and this report treats them as complementary rather than competing:</p>
+<ol>
+<li><strong>Deep-learning generative pipelines</strong> — Latent Diffusion Models (LDMs) and Diffusion Transformers (DiTs) that ingest raw black-and-white line art, extract stylistic parameters and color identities from reference illustrations, and apply them to target page or frame sequences.</li>
+<li><strong>Mathematical optimization pipelines</strong> — energy minimization, graph matching, optimal transport, and mesh deformation algorithms that provide deterministic, closed-form, or convex-optimization guarantees over color propagation, structural correspondence, and pose deformation.</li>
+</ol>
+<p>Manga-specific abstractions — stylized non-linear physics, extreme geometric deviations, bitonal screentones for volumetric shading, and overlapping panels — present severe domain gaps that baffle both conventional optical flow algorithms and natural-image neural networks. Zero-shot, unguided generative models remain prone to visual hallucinations, color bleeding, and temporal flickering; high-profile studios such as WIT Studio and Toei Animation have faced public backlash — and been forced to publicly apologize and replace broadcasted sequences — after audiences detected the temporal flickering, structural melting, and inconsistent line weights characteristic of unconstrained generative models.</p>
+<p>Beyond visual artifacts, purely generative deep learning introduces legal exposure. Under Article 30-4 of the Japanese Copyright Law, the unauthorized use of copyrighted works for model training is permitted under a "non-enjoyment purpose," but this exception is voided if the training unreasonably prejudices the interests of the copyright owner. Major publishers (Shueisha, Kodansha) and organizations like the Content Overseas Distribution Association (CODA) have aggressively mobilized against the scraping of proprietary character sheets and manga panels. Mathematical optimization algorithms — which operate directly on user-provided inputs (a single reference sheet, a set of scribbles, a sparse sketch sequence) rather than on massive pre-trained datasets — are comparatively insulated from this liability while still providing pixel-perfect, deterministic control.</p>
+<p>Consequently, the industry has pivoted toward <strong>Human-in-the-Loop (HITL)</strong> workflows that hybridize both paradigms: interactive canvas interfaces and programmatic video editor timelines, backed by either deterministic optimization solvers or reinforcement-learning-aligned generative backends (via Direct Preference Optimization), so that page-by-page and frame-by-frame user preferences continuously steer the output toward the artist's intent.</p>
+<hr />
+<h2 id="2-pre-processing-and-semantic-extraction"><strong>2. Pre-Processing and Semantic Extraction</strong></h2>
+<p>Manga pages are unstructured canvases containing overlapping layouts, speech bubbles, sound effects (onomatopoeia), and intricate screentones. Robust pre-processing pipelines are required to isolate structural lines, remove dialogue, and manage print artifacts before any colorization or animation stage — generative or mathematical — can operate correctly.</p>
+<pre><code class="language-mermaid">graph TD
+    A[&quot;Raw Manga Page&quot;] --&gt; B[&quot;Panel Segmentation&quot;]
+    A --&gt; C[&quot;Text Detection &amp; OCR (CRAFT / PaddleOCR)&quot;]
+    C --&gt; D[&quot;Dialogue Isolation &amp; Speech Bubble Masking&quot;]
+    D --&gt; E[&quot;Generative Inpainting (LaMa / Simple Lama)&quot;]
+    E --&gt; F[&quot;Cleaned Line Art&quot;]
+    A --&gt; G[&quot;Edge &amp; Stroke Extraction (PiDiNet / Informative-Drawing)&quot;]
+    G --&gt; F
+    A --&gt; H[&quot;Screentone VAE Quantization / Gabor Feature Codebooks&quot;]
+    H --&gt; I[&quot;Flat Color / Tone Retargeting&quot;]
+    F --&gt; J1[&quot;Deep-Learning Colorization &amp; Animation Generators (§3–4)&quot;]
+    F --&gt; J2[&quot;Mathematical Optimization Colorization &amp; Animation (§5–6)&quot;]
+    I --&gt; J1
+    I --&gt; J2
+</code></pre>
+<h3 id="21-text-detection-segmentation-and-inpainting"><strong>2.1 Text Detection, Segmentation, and Inpainting</strong></h3>
+<p>Speech bubbles and floating text must be programmatically isolated and removed. If text is left in the target canvas, both diffusion models and optimization solvers will attempt to colorize the character glyphs as structural line art, producing severe visual hallucinations or spurious boundary halting.</p>
+<ul>
+<li><strong>OCR and Text Segmentation:</strong> Pipelines deploy OCR systems and specialized bounding-box detectors, including CRAFT, PaddleOCR, and Comic Text Detector (<code>zyddnys/manga-image-translator</code>). These models locate horizontal text, vertical Japanese typography, and complex furigana (ruby characters).</li>
+<li><strong>Mask Expansion:</strong> Text bounding masks are programmatically expanded by a specified pixel radius to capture surrounding JPEG compression artifacts.</li>
+<li><strong>Inpainting:</strong> The masked dialogue areas are filled using inpainting networks such as Large Mask Inpainting (LaMa) or Simple Lama Inpainting. LaMa formulates the reconstruction of the occluded background as an optimization problem constrained by the Fourier representations of the surrounding unmasked regions, calculating a smooth structural continuation that perfectly restores the underlying manga canvas.</li>
+<li><strong>OCR Extraction:</strong> Specialized text readers (e.g., Manga OCR, Mokuro) extract text to render it dynamically on an HTML/CSS or canvas-based overlay, separating content from aesthetics so the system can colorize line art independently and re-composite the text layer dynamically.</li>
+</ul>
+<h3 id="22-line-art-extraction-and-screentone-management"><strong>2.2 Line Art Extraction and Screentone Management</strong></h3>
+<p>To represent shading in black-and-white print, manga artists use screentones — dense arrays of dot and line patterns. When downsampled or processed by standard convolutional layers, these high-frequency textures trigger severe moiré patterns, aliasing, and visual contamination; when fed directly into intensity-based mathematical optimization, they also artificially maximize local intensity variance and break the smoothness assumptions those solvers depend on (see §5.2).</p>
+<ul>
+<li><strong>Edge Detection:</strong> Sketch extraction networks like PiDiNet (Pixel Difference Networks) and Informative-Drawing are trained to isolate clean, continuous outline vectors, preserving stroke weight and brush style while discarding screentone noise.</li>
+<li><strong>Screentone Quantization (deep-learning path):</strong> Screentone Variational Autoencoders (VAEs) map bitonal screentone patterns into a discrete, quantized latent codebook, translating high-frequency halftone dots into a translation-invariant space so the colorizer can replace screentone vectors with smooth continuous fills.</li>
+<li><strong>Gabor Texture Features (mathematical-optimization path):</strong> Gabor wavelet filters measure local spatial frequencies and orientations, generating a statistical texture signature $T(x,y)$ for every pixel that represents the structural rhythm of the screentone rather than its raw intensity — the foundation for pattern-continuity color propagation (§5.2).</li>
+</ul>
+<hr />
+<h2 id="3-deep-learning-architectures-for-reference-guided-colorization"><strong>3. Deep Learning Architectures for Reference-Guided Colorization</strong></h2>
+<p>Reference-guided colorization maps chromatic properties from a colored reference asset (e.g., a character reference sheet or volume cover) onto target line art. This requires resolving spatial misalignment and maintaining strict identity (ID) consistency across varying poses, angles, and lighting conditions.</p>
+<h3 id="31-latent-diffusion-models-and-dual-branch-u-net-frameworks"><strong>3.1 Latent Diffusion Models and Dual-Branch U-Net Frameworks</strong></h3>
+<p>Contemporary reference-guided colorization relies on Latent Diffusion Models (LDMs) that operate in compressed latent spaces (e.g., a VAE compressing $512 \times 512$ pixel data into $64 \times 64$ latents). The denoising process is guided by a dual-conditioning mechanism:</p>
+<ul>
+<li><strong>Global Semantic Conditioning:</strong> Text prompts and stylistic instructions are encoded using CLIP or T5 text encoders, providing high-level semantic context.</li>
+<li><strong>Chromatic Conditioning:</strong> A secondary Reference U-Net processes the colored reference image, extracting color identity embeddings that are injected into the primary Denoising U-Net via cross-attention layers.</li>
+</ul>
+<h3 id="32-manganinja-patch-shuffling-and-point-driven-control"><strong>3.2 MangaNinja: Patch Shuffling and Point-Driven Control</strong></h3>
+<p>To prevent diffusion networks from performing generic style transfers, MangaNinja introduces progressive patch shuffling and point-driven control.</p>
+<ul>
+<li><strong>Progressive Patch Shuffling:</strong> During training, the reference image is split into structural patches and randomly shuffled, forcing the cross-attention layers to learn local semantic correspondences (e.g., matching hair texture to hair lines) rather than relying on global spatial alignment.</li>
+<li><strong>Tri-loss Objective:</strong> The patch-alignment process is reinforced by a three-part loss function utilizing Patch-Alignment Loss (PAL) and InfoNCE contrastive objectives, mathematically separating authentic reference patches from synthetic descriptors to prevent spurious color leakage.</li>
+<li><strong>Point-Driven Control:</strong> For edge cases where automated alignment fails, MangaNinja supports manual coordinate anchoring: users define coordinate matrices where corresponding point pairs on the reference and target share identical integer values.</li>
+<li><strong>PointNet Processing:</strong> A PointNet architecture processes these sparse coordinate matrices with shared MLPs and symmetric max-pooling, extracting permutation-invariant spatial embeddings that guide the Denoising U-Net to anchor specific colors to exact pixel coordinates.</li>
+</ul>
+<h3 id="33-colorflow-retrieval-augmented-sequence-colorization"><strong>3.3 ColorFlow: Retrieval-Augmented Sequence Colorization</strong></h3>
+<p>Manga production is sequential. ColorFlow targets frame-to-frame and page-to-page identity consistency via a three-stage framework:</p>
+<ol>
+<li><strong>Retrieval-Augmented Pipeline (RAP):</strong> Inspired by Retrieval-Augmented Generation, RAP dynamically extracts matching colored patches from a reference pool using CLIP to map images into a shared embedding space and cosine similarity to retrieve the most semantically relevant reference patches:
+   $$\text{Similarity}(u, v) = \frac{u \cdot v}{|u| |v|}$$</li>
+<li><strong>In-Context Colorization Pipeline (ICP):</strong> Routes the retrieved reference patches to a dual-branch U-Net; self-attention layers map retrieved colors directly to the target line-art boundaries.</li>
+<li><strong>Guided Super-Resolution Pipeline (GSRP):</strong> Merges the original high-resolution line art with the low-resolution colored latents, performing targeted upsampling to restore crisp lines and cross-hatching that latent-space compression would otherwise degrade.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Model</th>
+<th style="text-align: left;">CLIP-IS ↑</th>
+<th style="text-align: left;">FID ↓</th>
+<th style="text-align: left;">PSNR ↑</th>
+<th style="text-align: left;">SSIM ↑</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>MC-v2</strong></td>
+<td style="text-align: left;">0.8396</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>ACDO</strong></td>
+<td style="text-align: left;">0.9516</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>EBMC</strong></td>
+<td style="text-align: left;">0.9474</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>ColorFlow (w/ RAP &amp; GSRP)</strong></td>
+<td style="text-align: left;"><strong>0.9326</strong></td>
+<td style="text-align: left;"><strong>15.98</strong></td>
+<td style="text-align: left;"><strong>24.48</strong></td>
+<td style="text-align: left;"><strong>0.9448</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="34-mangadit-hierarchical-attention-in-diffusion-transformers"><strong>3.4 MangaDiT: Hierarchical Attention in Diffusion Transformers</strong></h3>
+<p>MangaDiT uses a Diffusion Transformer (DiT) backbone supporting global self-attention across image tokens, resolving region-level consistency issues that U-Nets encounter under extreme pose variations.</p>
+<ul>
+<li><strong>Hierarchical Attention Mechanism:</strong> MangaDiT extracts token sequences for the noisy image ($x_t$), text prompt ($c$), line art ($y$), and reference image ($r$), shaping them into spatial feature maps of dimension $H \times W \times C$.</li>
+<li><strong>Coarse Semantics:</strong> Max pooling with randomly selected kernel sizes is applied to these maps; pooled features are upsampled via nearest-neighbor interpolation and projected into context-aware query ($Q_c$) and key ($K_c$) matrices.</li>
+<li><strong>Scaled Dot-Product Attention:</strong>
+   $$\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{Q K^T}{\sqrt{d_k}}\right) V$$</li>
+<li><strong>Context-Aware Attention:</strong>
+   $$\text{ContextAttention}(Q_c, K_c, V) = \text{softmax}\left(\frac{Q_c K_c^T}{\sqrt{d_k}}\right) V$$</li>
+<li><strong>Hierarchical Blending:</strong> A timestep-dependent weighting strategy ($\alpha_t$) blends both mechanisms:
+   $$\text{HierarchicalAttention} = (1 - \alpha_t) \cdot \text{Attention}(Q, K, V) + \alpha_t \cdot \text{ContextAttention}(Q_c, K_c, V)$$
+   This lets the model rely on coarse semantic matching during early noisy steps, shifting toward fine-grained token matching as the image resolves.</li>
+</ul>
+<h3 id="35-sketchdeco-and-instanceanimator"><strong>3.5 SketchDeco and InstanceAnimator</strong></h3>
+<ul>
+<li><strong>SketchDeco:</strong> A training-free latent composition framework using diffusion inversion (via DPM-Solver++) to map region segmentation masks to exact color palettes, with customized self-attention layers to blend local regions without altering global generative priors.</li>
+<li><strong>InstanceAnimator:</strong> A multi-instance sketch video colorization model leveraging adaptive decoupled control to inject foreground and background semantics independently, preventing color bleeding in scenes with multiple characters.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Colorization Framework</th>
+<th style="text-align: left;">Primary Innovation</th>
+<th style="text-align: left;">Mechanism for Alignment / Controllability</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>ColorFlow</strong></td>
+<td style="text-align: left;">Retrieval-Augmented Sequence Colorization</td>
+<td style="text-align: left;">Dual-branch U-Net; contextual patch extraction from reference pools.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>MangaNinja</strong></td>
+<td style="text-align: left;">Point-Driven Fine-Grained Control</td>
+<td style="text-align: left;">Patch shuffling module; user-defined spatial coordinate matrices processed by PointNet.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>SketchDeco</strong></td>
+<td style="text-align: left;">Training-Free Latent Composition</td>
+<td style="text-align: left;">Diffusion inversion (DPM-Solver++); custom self-attention for region masks.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>InstanceAnimator</strong></td>
+<td style="text-align: left;">Multi-Instance Separation</td>
+<td style="text-align: left;">Adaptive decoupled control; injects background and foreground semantics independently.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-generative-animation-synthesizing-video-from-still-panels"><strong>4. Generative Animation: Synthesizing Video from Still Panels</strong></h2>
+<p>Once static manga panels are colorized, they are animated to generate fluid video sequences. Traditional frame interpolation methods (e.g., optical flow) fail when handling non-linear character movements, dramatic camera pans, and dis-occlusions. The industry has therefore adopted generative keyframing via video diffusion models, alongside the deterministic mesh-deformation approach covered in §6.2.</p>
+<h3 id="41-diffusion-transformers-dit-and-flow-matching"><strong>4.1 Diffusion Transformers (DiT) and Flow Matching</strong></h3>
+<p>Modern animation pipelines use Diffusion Transformers, such as Wan2.1 and CogVideoX, to capture spatio-temporal dependencies over long trajectories.</p>
+<ul>
+<li><strong>Spatio-Temporal Causal VAE:</strong> Wan2.1's 3D spatio-temporal causal VAE (Wan-VAE) achieves compression while preserving temporal causality, encoding/decoding unlimited-length videos without historical frame loss.</li>
+<li><strong>Flow Matching:</strong> The generation process is guided by Flow Matching. The colorized manga panel is the initial Image-to-Video (I2V) condition; a CLIP image encoder extracts features from the panel, injected into the DiT blocks via cross-attention, while text prompts detailing desired movement (via a T5 text encoder) are integrated into the generative path.</li>
+</ul>
+<h3 id="42-tooncomposer-unified-post-keyframing-and-spatial-low-rank-adapters"><strong>4.2 ToonComposer: Unified Post-Keyframing and Spatial Low-Rank Adapters</strong></h3>
+<p>ToonComposer unifies in-betweening and colorization into a single generative post-keyframing stage, converting a single colored reference frame and a sparse sequence of line-art sketches into a smooth animation.</p>
+<ul>
+<li><strong>Spatial Low-Rank Adapter (SLRA):</strong> Foundational DiT models have strong temporal priors from natural videos, but applying them directly to 2D animations causes visual degradation. SLRA adapts the spatial appearance of the DiT to the animation domain while leaving native temporal reasoning untouched.</li>
+<li><strong>Token Sequences and RoPE:</strong> Sketch tokens are appended to the DiT sequence and mapped using Rotary Positional Embeddings, enabling precise motion control across long sequences using only sparse inputs.</li>
+</ul>
+<h3 id="43-live2d-and-automated-ai-rigging"><strong>4.3 Live2D and Automated AI Rigging</strong></h3>
+<p>For VTuber assets, dialogue sequences, and idle animations, full-scale video diffusion is computationally expensive and prone to artifacts. Animation pipelines integrate automated rigging tools such as AniForge, Sloyd, and GoEnhance.</p>
+<ul>
+<li><strong>Automated Bone Mapping:</strong> These tools segment 2D character images into depth-aware layers, generate skeletal hierarchies, and perform automatic weight painting.</li>
+<li><strong>Deformation Controllers:</strong> Guided by text prompts, reference video clips, or real-time audio inputs (root-mean-square [RMS] volume for lip-sync), the rigging engine deforms the segmented layers to simulate eye blinks, breathing, and 3D rotations without modifying the original line art. This mesh-based mode of animation converges conceptually with the deterministic ARAP approach in §6.2, and commercial Live2D pipelines commonly combine both: mathematical mesh regression for facial blendshapes and pose/scale regression, layered under generative in-betweening for full-body motion.</li>
+</ul>
+<hr />
+<h2 id="5-mathematical-optimization-for-colorization"><strong>5. Mathematical Optimization for Colorization</strong></h2>
+<p>Unlike purely stochastic generative models, mathematical optimization provides absolute determinism. By defining color propagation as rigorous energy minimization, graph matching, and optimal transport problems, studios can achieve pixel-perfect control that operates directly on user-provided inputs — insulated from the copyright liabilities of massive pre-trained datasets and natively suited to precise HITL workflows.</p>
+<h3 id="51-the-quadratic-cost-formulation-and-sparse-linear-systems-levin-et-al"><strong>5.1 The Quadratic Cost Formulation and Sparse Linear Systems (Levin et al.)</strong></h3>
+<p>In a standard HITL scribble workflow, an artist provides a sparse set of color annotations on a grayscale manga image. These scribbles act as hard Dirichlet boundary conditions within a linear system. The image is first transformed from RGB into a luminance/chrominance space (YUV or YCbCr): the $Y$ channel represents intensity, while $U$ and $V$ encapsulate color information.</p>
+<p>The core algorithm minimizes the squared difference between the color of a target pixel $r$ and the weighted average of the colors of its neighboring pixels $s$ within a predefined neighborhood $N(r)$. For a single color channel (e.g. $U$):</p>
+<p>$$J(U) = \sum_r \left(U(r) - \sum_{s \in N(r)} w_{rs} U(s)\right)^2$$</p>
+<p>The efficacy of this optimization depends entirely on the weighting function $w_{rs}$, which penalizes assigning different colors to adjacent pixels. Assuming a local linear relationship between color and intensity, the weights are proportional to the intensity correlation between the pixels:</p>
+<p>$$w_{rs} \propto 1 + \frac{1}{\sigma_r^2}(Y(r) - \mu_r)(Y(s) - \mu_r)$$</p>
+<p>where $\mu_r$ is the local mean intensity and $\sigma_r^2$ is the local intensity variance within the neighborhood of pixel $r$. Normalizing these weights so that $\sum_s w_{rs} = 1$ enforces ultra-smooth color transitions in regions with low intensity variance (flat shading), while strictly preserving color boundaries where intensity changes abruptly (high variance — a drawn line).</p>
+<p>Expressed in matrix notation:</p>
+<p>$$J(U) = U^T (I - W)^T (I - W) U$$</p>
+<p>where $I$ is the identity matrix and $W$ is the highly sparse affinity matrix containing all weights $w_{rs}$. Because $(I-W)^T(I-W)$ is symmetric and positive semi-definite, solving for the global minimum equates to solving a large-scale, sparse system of linear equations — a quadratic programming problem typically solved via preconditioned conjugate gradient or direct sparse Cholesky factorization, rendering colorizations in real time.</p>
+<h3 id="52-overcoming-manga-modalities-screentone-pattern-continuity"><strong>5.2 Overcoming Manga Modalities: Screentone Pattern Continuity</strong></h3>
+<p>While the quadratic cost function performs exceptionally well on natural photographs with smooth gradients, it fails catastrophically on traditional manga. Manga relies heavily on screentones — dense clusters of pure black-and-white dots, cross-hatching, and halftones. Because screentones consist entirely of extreme binary pixels, the local intensity variance $\sigma_r^2$ is artificially maximized globally, violating the intensity-continuity assumption and causing color to either bleed indiscriminately across boundaries or halt on encountering a halftone.</p>
+<p>To adapt mathematical optimization to manga, pixel affinity must transition from <strong>intensity continuity</strong> to <strong>pattern continuity</strong>. This is achieved by projecting the manga image into a higher-dimensional texture feature space using Gabor wavelet filters, generating a texture signature $T(x,y)$ for every pixel that represents the structural rhythm of the screentone rather than raw intensity.</p>
+<p>With pattern features extracted, color-boundary propagation is modeled using the <strong>Level Set method</strong>. A propagating curve $\Gamma$ is implicitly represented as the zero level set of a higher-dimensional surface function $\Phi(x,y,t)$, whose temporal evolution follows the PDE:</p>
+<p>$$\Phi_t = h \cdot \left(F_0 + F_1|\nabla \Phi|\right)$$</p>
+<p>The critical component is the halting function $h(x,y)$, which dictates where the color flow decelerates and stops. For manga screentones, $h$ is defined by the Euclidean distance in Gabor feature space:</p>
+<p>$$h(x,y) = \frac{1}{1 + |D(T_{scribble}, T(x,y))|}$$</p>
+<p>If the textural pattern at the evolving front $T(x,y)$ matches the pattern beneath the user's initial scribble $T_{scribble}$, the distance $D$ approaches zero, $h \approx 1$, and the curve continues expanding. If the pattern changes abruptly — e.g. transitioning from cross-hatched jacket screentone to blank background — $h \to 0$ and propagation mathematically halts. This allows optimization algorithms to accurately segment and colorize disparate, visually disconnected regions of a manga character's hair or clothing simply by traversing the mathematical continuity of the underlying screentone geometry.</p>
+<h3 id="53-reference-based-colorization-graph-correspondence-and-quadratic-programming"><strong>5.3 Reference-Based Colorization: Graph Correspondence and Quadratic Programming</strong></h3>
+<p>Industrial manga production rarely relies entirely on manual scribbling. The dominant workflow requires reference-based colorization, wherein an entire monochrome chapter is programmatically colored according to a single, predefined character reference sheet — matching semantic regions between the reference image and the target monochrome panel across extreme variations in posture, scale, and perspective.</p>
+<p>One robust approach models both the colored reference image and the target manga panel as undirected geometric graphs. Images are first over-segmented into superpixels, each becoming a node; edges connect spatially adjacent superpixels. The objective is a mathematical mapping that transfers exact chromatic values from reference-graph nodes to the correct corresponding target-graph nodes.</p>
+<p>This correspondence task is a Quadratic Programming (QP) problem. Let $N_r$ and $N_t$ denote the number of nodes in the reference and target graphs. The assignment is a binary matrix $X$ of dimensions $N_r \times N_t$, where $X_{ij} = 1$ if node $i$ in the reference matches node $j$ in the target (dummy nodes square the matrix to handle occlusions or missing anatomical parts). The cost of matching a pair of nodes $(i,j)$ alongside another pair $(i',j')$ is quantified within an affinity matrix $Q$ evaluating relative position, scale, topological structure, and pattern features. The global optimization objective:</p>
+<p>$$\min_x x^T Q x$$</p>
+<p>subject to strict one-to-one mapping constraints:</p>
+<p>$$\sum_j x_{ij} = 1 \quad \forall i, \quad \sum_i x_{ij} = 1 \quad \forall j, \quad x_{ij} \in {0,1}$$</p>
+<p>where $x$ is the flattened vector form of $X$. Because exact graph matching (the Quadratic Assignment Problem) is NP-hard, the integer constraints $x_{ij} \in {0,1}$ are relaxed to $x_{ij} \ge 0$. The relaxed QP yields a probabilistic assignment matrix, subsequently discretized into a hard assignment via the Hungarian method. This accommodates the extreme morphological deformations of manga characters across consecutive panels, ensuring the exact shade of a reference garment transfers correctly to the target garment regardless of how the fabric folds or contorts.</p>
+<h3 id="54-optimal-transport-and-the-sinkhorn-algorithm"><strong>5.4 Optimal Transport and the Sinkhorn Algorithm</strong></h3>
+<p>An increasingly dominant, highly scalable paradigm for reference-based color transfer leverages Optimal Transport (OT): the minimum effort required to deform one probability distribution (the reference image's color palette and superpixel geometry) into another (the target monochrome image's structural layout).</p>
+<p>Denote the source and target distributions $\mu$ and $\nu$. The goal is a transport plan $P$ — a joint probability matrix — minimizing total transportation cost:</p>
+<p>$$\min_{P \in \Pi(\mu,\nu)} \langle P, C \rangle = \sum_{i,j} P_{ij} C_{ij}$$</p>
+<p>where $C$ is a cost matrix representing geometric or textural distance between cluster $i$ in the reference and cluster $j$ in the target, and $\Pi(\mu,\nu)$ is the set of all valid joint distributions with marginals $\mu$ and $\nu$.</p>
+<p>Calculating the exact Wasserstein distance is computationally prohibitive for high-resolution manga assets. Entropic regularization transforms the problem into a strictly convex task:</p>
+<p>$$\min_P \langle P, C \rangle + \epsilon H(P), \qquad H(P) = \sum P_{ij} \log P_{ij}$$</p>
+<p>This smooths the transport polytope, rendering the objective fully differentiable and enabling the <strong>Sinkhorn algorithm</strong> — an iterative method solving for the transport plan via highly parallelizable, GPU-friendly matrix-vector multiplications, reducing computation from hours to milliseconds.</p>
+<p>To adapt this to the fragmented topologies of a comic page, <strong>Optimal Flow Transport (OFT)</strong> replaces strict marginal constraints (which fail when character features are heavily occluded or isolated) with flow balance constraints across a generalized graph, using entropic virtual flows so isolated or disjointed nodes participate mathematically in Sinkhorn iterations without requiring continuous flow passages. Advanced variants such as <strong>Capacity-Constrained EOFT-Sinkhorn</strong> impose strict upper bounds on nodes and edges, transforming alignment into a minimum-cost flow problem capable of handling up to five thousand discrete structural clusters with negligible computational error. Once the optimal transport plan $P$ is finalized, it acts as a deterministic mathematical mapping, transplanting reference chromatic properties onto the grayscale target — relying on post-processing operators like guided image filtering to re-sharpen the underlying manga ink lines.</p>
+<hr />
+<h2 id="6-mathematical-optimization-in-spatio-temporal-animation"><strong>6. Mathematical Optimization in Spatio-Temporal Animation</strong></h2>
+<p>Transitioning from static manga panels to moving animated sequences mandates mathematical optimization across the temporal dimension. The supreme challenge in inbetweening and animation is temporal coherence: chrominance, line weights, and shading boundaries must track flawlessly from frame to frame to avoid the visual flickering and "boiling" artifacts that plague standard diffusion models.</p>
+<h3 id="61-spatio-temporal-color-propagation-and-graph-cuts"><strong>6.1 Spatio-Temporal Color Propagation and Graph Cuts</strong></h3>
+<p>Levin's quadratic cost function (§5.1) extends natively into space-time volumes. Conceptualizing an animated video sequence as a three-dimensional pixel grid $(x,y,t)$, the neighborhood $N(r)$ expands to encompass pixels in adjacent temporal frames. Minimizing the 3D quadratic cost function propagates user scribbles not just spatially across a single 2D plane, but temporally through the Z-axis of the sequence: if an artist annotates a character's iris in frame 1 and frame 24, the algorithm smoothly interpolates the color boundaries through frames 2–23, provided luminance gradients remain mathematically traceable.</p>
+<p>To manage rapid object occlusions and high-velocity motion where localized intensity tracking deteriorates, the animation problem is mapped to a Markov Random Field (MRF) and resolved using <strong>Graph Cuts</strong> (Combinatorial Min-Cut / Max-Flow). The Ford–Fulkerson theorem establishes that finding the maximum flow in a network is mathematically equivalent to discovering the minimum-capacity cut that bisects source from sink.</p>
+<p>Within animation colorization, assigning a color label to a pixel is equivalent to severing its topological connection to competing color labels. The overall energy function:</p>
+<p>$$E(L) = \sum_p D_p(L_p) + \sum_{(p,q) \in N} V_{p,q}(L_p, L_q)$$</p>
+<p>The data term $D_p(L_p)$ calculates the penalty for assigning label $L_p$ to pixel $p$, largely dictated by user scribbles or optimal-transport mappings. The smoothness term $V_{p,q}(L_p, L_q)$ penalizes assigning differing labels to adjacent pixels (spatially or temporally) that share similar intensities or Gabor textures. Standard polynomial-time combinatorial algorithms such as push-relabel compute this cut, but for the highly structured 3D grid graphs found in video files, <strong>Boykov–Kolmogorov augmenting path algorithms</strong> perform significantly faster, achieving near-linear observed running times. These graph cuts yield a globally optimal binary separation, guaranteeing razor-sharp color boundaries track flawlessly across the temporal axis regardless of character-movement velocity.</p>
+<h3 id="62-mesh-based-deformation-as-rigid-as-possible-arap-and-live2d"><strong>6.2 Mesh-Based Deformation: As-Rigid-As-Possible (ARAP) and Live2D</strong></h3>
+<p>Another potent optimization technique for animating static 2D manga panels bypasses pixel-level color flow entirely in favor of geometric mesh deformation, using the <strong>As-Rigid-As-Possible (ARAP)</strong> algorithm. The isolated manga character is overlaid with a dense, triangulated 2D mesh.</p>
+<p>When a user defines animation keyframes by dragging a small subset of control vertices (e.g., pulling a wrist to simulate a punch), ARAP computes the positions of all other vertices simultaneously by minimizing a global deformation energy. The foundational axiom of ARAP is that individual triangles should undergo purely rigid transformations — rotation and translation only, no shearing/stretching/scaling. The total deformation energy sums the structural deviation from rigidity across every local triangular cell. The optimization alternates between two steps:</p>
+<ol>
+<li><strong>Local Step:</strong> Given current arbitrary vertex positions, compute the optimal rotation matrix for each triangle via Singular Value Decomposition (SVD).</li>
+<li><strong>Global Step:</strong> Given those optimal rotations, solve a massive, sparse linear system (via the Poisson equation) to globally update vertex positions, minimizing the geometric distance between transformed mesh edges and idealized rigid edges.</li>
+</ol>
+<p>By coupling ARAP with a skeleton loss function — heavily constraining the length variation of underlying skeletal vectors to guarantee anatomical regularity — static 2D manga illustrations can be mathematically puppeted. Because the cost functions remain purely quadratic, mesh updates continuously in real time, delivering a highly fluid, deterministic animation tool that heavily reduces the manual labor of inbetweening.</p>
+<p>This mesh-based optimization logic is heavily utilized in commercial Live2D pipelines (see also §4.3): algorithms map key facial points from a single manga illustration, constructing a lightweight structural rig; using the shape-basis concept from 3D face reconstruction, the system generates facial blendshapes suitable for 2D layered graphics. The algorithm relies on mathematical regression to optimize pose and scale parameters (horizontal shift $x$, vertical shift $y$, and scale factors) for distinct facial components, generating expressive, continuously looping idle animations and perfectly synced lip movements driven by real-time audio RMS volume optimization.</p>
+<hr />
+<h2 id="7-iterative-alignment-via-dpo-and-reinforcement-learning"><strong>7. Iterative Alignment via DPO and Reinforcement Learning</strong></h2>
+<p>To ensure generative models learn from human corrections, systems capture human selections and canvas edits as pairwise preference signals to fine-tune the networks. This is the primary alignment mechanism for the deep-learning pipelines of §3–4, though its region-aware variants (§7.2) draw directly on the deterministic masking/graph-cut concepts of §6.1.</p>
+<h3 id="71-the-transition-to-direct-preference-optimization-dpo"><strong>7.1 The Transition to Direct Preference Optimization (DPO)</strong></h3>
+<p>Early alignment methods used Reinforcement Learning from Human Feedback (RLHF), modeling denoising as a Markov Decision Process and updating weights via Proximal Policy Optimization. These methods (e.g., DDPO) suffered from high GPU memory overhead, high gradient variance, and the need to maintain an active reward model.</p>
+<p>Direct Preference Optimization (DPO) bypasses the reward model, mapping human preferences directly to policy updates via a simple classification objective. Given a preferred output $y_w$ and a rejected output $y_l$, the Diffusion-DPO loss updates the model's weights to make the preferred trajectory more likely while penalizing the rejected one, constrained by a KL-divergence penalty ($\beta$) against the frozen reference model $\pi_{\text{ref}}$:</p>
+<p>$$\mathcal{L}<em>{\text{DPO}}(\theta; \theta</em>{\text{ref}}) = -\mathbb{E}<em>{(x, y_w, y_l)} \left[ \log \sigma \left( \beta \log \frac{\pi</em>\theta(y_w | x)}{\pi_{\theta_{\text{ref}}}(y_w | x)} - \beta \log \frac{\pi_\theta(y_l | x)}{\pi_{\theta_{\text{ref}}}(y_l | x)} \right) \right]$$</p>
+<p>where $\sigma$ is the sigmoid function, $x$ represents the conditioning signals (line art and reference), and $\pi_\theta$ the active policy model.</p>
+<p>A related closed-form reparameterization, used for direct pairwise preference scoring between two candidate outputs $x_1, x_2$ given context $c$:</p>
+<p>$$u(c, x_1, x_2) = \beta \log \frac{\pi_\theta(x_1|c)}{\pi_{ref}(x_1|c)} - \beta \log \frac{\pi_\theta(x_2|c)}{\pi_{ref}(x_2|c)}$$</p>
+<p>Here $\beta$ acts as a hyperparameter controlling the weight of the KL-divergence term. The resulting Diffusion-DPO loss directly propagates the human preference signal through the diffusion network in a fully differentiable manner, forcing the model to mathematically avoid undesirable output distributions like structural melting or chromatic flickering.</p>
+<h3 id="72-advanced-dpo-frameworks-curriculum-dpo-dspo-and-localdpo"><strong>7.2 Advanced DPO Frameworks: Curriculum DPO, DSPO, and LocalDPO</strong></h3>
+<ul>
+<li><strong>Curriculum DPO:</strong> Ranks preference pairs by visual difficulty. Early epochs train on "easy" pairs with obvious aesthetic differences; later epochs introduce "hard" pairs with subtle rendering differences, mitigating visual inconsistency and accelerating convergence.</li>
+<li><strong>Direct Score Preference Optimization (DSPO):</strong> Aligns the preference loss with the original score-matching pretraining objectives of diffusion models. SDPO (Importance-Sampled DPO) addresses timestep-dependent instability from the high gradient variance inherent to early noisy steps.</li>
+<li><strong>LocalDPO and Region-Aware DPO:</strong> Global DPO can degrade overall model performance if it penalizes an entire video clip for a single localized artifact. In LocalDPO, the artist paints a bounding box (conceptually the same masking primitive as the Graph-Cut smoothness term of §6.1) over the error; the loss optimizes preference learning strictly within that spatial boundary, preserving global coherence elsewhere in the clip. Variants like "Mind the Generative Details" (Direct Localized Detail Preference Optimization) extend this to fine-grained localized regions such as flickering screentones.</li>
+<li><strong>Self-DPO:</strong> The system automatically generates synthetic negative samples by adding noise or blur to known good frames, generating preference training pairs without manual human labeling.</li>
+</ul>
+<h3 id="73-implementing-feedback-via-lora-adaptation"><strong>7.3 Implementing Feedback via LoRA Adaptation</strong></h3>
+<p>Full-parameter DPO fine-tuning is computationally expensive. Studio pipelines use Low-Rank Adaptation (LoRA) to freeze the original model weights ($W_0$) and inject trainable rank decomposition matrices ($A$ and $B$) into attention blocks:</p>
+<p>$$W = W_0 + \Delta W = W_0 + \frac{\alpha}{r} (A \cdot B)$$</p>
+<p>By keeping the rank ($r$) low, LoRA reduces trainable parameters by up to 10,000×. As artists correct frames, the system updates the lightweight LoRA module using the Diffusion-DPO loss. Over time, the LoRA adapts to the specific visual style of the property without altering the foundational model.</p>
+<h3 id="74-spatial-low-rank-adapters-and-point-driven-constraint-vectors"><strong>7.4 Spatial Low-Rank Adapters and Point-Driven Constraint Vectors</strong></h3>
+<p>Beyond DPO proper, modern architectures like ToonComposer and MangaNinja (§3.2, §4.2) also use mathematical matrix operations to strictly bound diffusion behavior. To tailor a heavy DiT to the specific visual domain of anime and manga without destroying its pre-trained temporal-physics priors, researchers deploy Spatial Low-Rank Adapters (SLRA, §4.2), which mathematically isolate and optimize low-rank matrices specifically within the spatial self-attention layers, explicitly prohibiting alterations to temporal processing layers. Similarly, point-driven constraint vectors (§3.2) inject explicit mathematical vectors into the cross-attention layers of the U-Net or DiT, forcing the probability distributions of the latent denoising process to anchor reference colors to target structural coordinates, virtually eliminating chromatic bleed.</p>
+<hr />
+<h2 id="8-datasets-and-evaluation-benchmarks"><strong>8. Datasets and Evaluation Benchmarks</strong></h2>
+<p>The training and evaluation of both generative and optimization-based colorization/animation systems requires high-quality, domain-specific data and rigorous quantitative evaluation metrics.</p>
+<h3 id="81-the-sakuga-42m-dataset"><strong>8.1 The Sakuga-42M Dataset</strong></h3>
+<p>Sakuga-42M is the foundational dataset for anime video diffusion. It contains 42 million keyframes extracted from 1.2 million video clips.</p>
+<ul>
+<li><strong>Temporal Curation:</strong> Automated pipelines deploy PySceneDetect for shot segmentation. To accommodate the unique timing of traditional animation (animating "on twos" [12 fps] or "on threes" [8 fps]), the pipeline uses SSIM filters to discard redundant adjacent frames, reducing data volume by 45%.</li>
+<li><strong>Annotations:</strong> Clips are annotated using BLIP-v2 and LLMs to include tags on artistic styles (raster vs. cel-animation), frame-rate parameters, and dynamic motion scores.</li>
+</ul>
+<h3 id="82-quantitative-evaluation-metrics"><strong>8.2 Quantitative Evaluation Metrics</strong></h3>
+<p>Models are benchmarked against specialized test suites (e.g., PKBench, ColorFlow-Bench) evaluating:</p>
+<ul>
+<li><strong>Fréchet Video Distance (FVD):</strong> Measures temporal coherence and structural realism by comparing feature distributions against real animations — mathematically the Wasserstein-2 distance between spatio-temporal feature clusters of generated vs. ground-truth video (echoing the Optimal Transport formalism of §5.4).</li>
+<li><strong>Structural Similarity Index (SSIM):</strong> Measures degradation of structural information, penalizing models that hallucinate or melt manga line art (luminance/contrast/structure matrix correlation; maximization target).</li>
+<li><strong>Mean Squared Color Error (MSCE):</strong> Quantifies color accuracy relative to the reference palette (Euclidean distance in localized color spaces; minimization target).</li>
+<li><strong>Learned Perceptual Image Patch Similarity (LPIPS):</strong> Evaluates human-perceived visual distortion via L2 distance between normalized deep feature stacks (minimization target).</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Model</th>
+<th style="text-align: left;">Fréchet Video Distance (FVD) ↓</th>
+<th style="text-align: left;">SSIM ↑</th>
+<th style="text-align: left;">Primary Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>ToonCrafter</strong></td>
+<td style="text-align: left;">268.02</td>
+<td style="text-align: left;">0.5278</td>
+<td style="text-align: left;">Pure generative in-betweening and frame interpolation.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>AniDoc</strong></td>
+<td style="text-align: left;">256.33</td>
+<td style="text-align: left;">0.7536</td>
+<td style="text-align: left;">Single-reference dense sketch colorization.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>ToonComposer</strong></td>
+<td style="text-align: left;">302.15 (Generative) / 46.80 (SLRA)</td>
+<td style="text-align: left;">0.8360</td>
+<td style="text-align: left;">Unified sparse post-keyframing via Spatial Low-Rank Adaptation.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TimeColor</strong></td>
+<td style="text-align: left;">239.11</td>
+<td style="text-align: left;">0.7712</td>
+<td style="text-align: left;">Variable-count multi-reference temporal colorization.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Metric</th>
+<th style="text-align: left;">Primary Application</th>
+<th style="text-align: left;">Mathematical Focus</th>
+<th style="text-align: left;">Target Goal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>SSIM</strong></td>
+<td style="text-align: left;">Line Art Preservation</td>
+<td style="text-align: left;">Luminance, contrast, and structure matrix correlation</td>
+<td style="text-align: left;">Maximization</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>MSCE</strong></td>
+<td style="text-align: left;">Reference Palette Accuracy</td>
+<td style="text-align: left;">Euclidean distance in localized color spaces</td>
+<td style="text-align: left;">Minimization</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>FVD</strong></td>
+<td style="text-align: left;">Spatio-Temporal Animation</td>
+<td style="text-align: left;">Wasserstein-2 distance of spatio-temporal feature clusters</td>
+<td style="text-align: left;">Minimization</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>LPIPS</strong></td>
+<td style="text-align: left;">Visual Aesthetic Fidelity</td>
+<td style="text-align: left;">L2 distance between normalized feature stacks</td>
+<td style="text-align: left;">Minimization</td>
+</tr>
+</tbody>
+</table>
+<p>By continuously minimizing MSCE and FVD, systems like ToonComposer, MangaNinja, and OFT-Sinkhorn pipelines can demonstrably outperform unconstrained models in both structural fidelity and temporal rigidity.</p>
+<hr />
+<h2 id="9-human-in-the-loop-workflows-and-client-side-architecture"><strong>9. Human-in-the-Loop Workflows and Client-Side Architecture</strong></h2>
+<p>The definitive advantage shared by both mathematical optimization (quadratic programming, optimal transport, localized latent constraints) and generative deep learning is the capacity to enable highly responsive Human-in-the-Loop (HITL) workflows. Professional artists require zero-latency feedback: if an artist draws a constraint scribble or defines an ARAP mesh vertex, the system must update the colorization or pose instantly.</p>
+<h3 id="91-visual-programming-comfyui-workflows"><strong>9.1 Visual Programming (ComfyUI Workflows)</strong></h3>
+<p>Node-based visual programming interfaces like ComfyUI serve as the standard for configuring generative pipelines. Manga colorization pipelines (Sketch2Manga, AniDoc nodes) connect several functional models:</p>
+<ul>
+<li><strong>ControlNet:</strong> Locks the structural boundaries of the line art, extracting edge maps and injecting them into the decoding layers of the diffusion model so output conforms to the original artist's strokes.</li>
+<li><strong>IP-Adapter:</strong> Extracts visual features from reference sheets and injects them into cross-attention layers as a style guide.</li>
+<li><strong>Guidance Parameters:</strong> Sampling nodes allow users to tune visual weights, balancing <code>guidance_scale_ref</code> (adherence to the reference image) against <code>guidance_scale_point</code> (adherence to manual points).</li>
+</ul>
+<h3 id="92-interactive-canvas-editors-and-multiply-blend-modes"><strong>9.2 Interactive Canvas Editors and Multiply Blend Modes</strong></h3>
+<p>Canvas editors built on Fabric.js, CamanJS, or Gradio's ImageEditor use REST APIs or WebSockets to execute real-time editing. To preserve the crispness of the original line art, these editors rely on a specific layer hierarchy:</p>
+<ol>
+<li><strong>Top Layer (Original Line Art):</strong> Set to <strong>"Multiply" blend mode</strong>:
+   $$\text{Color}<em>{\text{Result}} = \frac{\text{Color}</em>{\text{LineArt}} \times \text{Color}_{\text{Generated}}}{255}$$
+   Since absolute white is 255, multiplying any underlying color by white leaves it unchanged; multiplying by black (0) yields black. This preserves anti-aliased ink lines above the color layer.</li>
+<li><strong>Middle Layer (Generated Color):</strong> The raw color output from the diffusion model or optimization solver.</li>
+<li><strong>Interactive Masking Layer:</strong> A binary canvas where the user paints masks over corrupted regions.</li>
+</ol>
+<pre><code>+-------------------------------------------------------+
+|  Top Layer: Original Line Art (Multiply Blend Mode)   |
++-------------------------------------------------------+
+|  Middle Layer: Generated Color Output (Raw Diffusion) |
++-------------------------------------------------------+
+|  Bottom Layer: User Masking Canvas (Inpainting Area)  |
++-------------------------------------------------------+
+</code></pre>
+<p>When an error is masked, the frontend sends the mask coordinates to the backend, which triggers an inpainting diffusion model (or a re-solve of the local optimization system) to regenerate the masked region. To optimize editing efficiency, the editor calculates variance across generation passes using MC-Dropout or Bayesian Active Learning by Disagreement (BALD), automatically highlighting high-uncertainty pixels for manual review.</p>
+<h3 id="93-accelerating-feedback-with-quadtree-decomposition"><strong>9.3 Accelerating Feedback with Quadtree Decomposition</strong></h3>
+<p>For high-resolution, 4K manga pages, minimizing an energy function across tens of millions of pixels can introduce severe computational latency, fracturing the interactive HITL experience. Optimization routines execute spatial partitioning algorithms, most notably <strong>Quadtree decomposition</strong>: instead of processing the manga as a uniform pixel grid, the image matrix is recursively partitioned into hierarchical blocks. Regions with uniform flat shading or blank white space are aggregated into massive singular blocks; highly detailed regions (complex facial expressions, intricate screentone cross-hatching) are heavily subdivided down to the individual pixel level. Running the optimization algorithm across this non-uniform grid drastically reduces the dimensionality of the sparse linear system, facilitating instant, interactive color propagation matching the speed of the artist's stylus.</p>
+<h3 id="94-remotion-and-react-based-timelines"><strong>9.4 Remotion and React-Based Timelines</strong></h3>
+<p>Remotion is a programmatic video rendering framework using React, TypeScript, and CSS to define timelines.</p>
+<ul>
+<li><strong>Timeline Splicing:</strong> Timelines track active frame counts using hooks like <code>useCurrentFrame()</code> and <code>useVideoConfig()</code>.</li>
+<li><strong>API Splicing:</strong> When an artist edits a frame in the UI, the frontend sends a REST or WebSocket command to the backend. Once corrected, the backend sends the revised frame back; Remotion's composition timeline hot-reloads and splices this single frame in real time, bypassing full video re-renders.</li>
+</ul>
+<h3 id="95-webgpu-onnx-runtime-web-and-client-side-ai-economics"><strong>9.5 WebGPU, ONNX Runtime Web, and Client-Side AI Economics</strong></h3>
+<p>To eliminate network latency, pipelines run inference directly in the user's browser (or, in a desktop application, directly on local client hardware) using ONNX Runtime Web via WebGPU.</p>
+<ul>
+<li><strong>Hardware Access:</strong> WebGPU grants direct access to local GPU hardware (NVIDIA, AMD, Apple Silicon), executing compute shaders and half-precision (FP16) arithmetic — unlike its predecessor WebGL, dramatically reducing memory bandwidth requirements while accelerating matrix-vector multiplications.</li>
+<li><strong>Zero-Latency Inference:</strong> Running lightweight inpainting, colorization, Optimal Transport Sinkhorn iterations, ARAP mesh deformations, and even quantized Diffusion-DPO models locally reduces round-trip latency from several seconds to milliseconds, and yields three profound advantages for industrial pipelines:</li>
+<li><strong>Zero Latency:</strong> Complete elimination of cloud round-tripping for interactive constraint mapping and real-time colorization feedback.</li>
+<li><strong>Privacy and IP Security:</strong> Sensitive, unreleased manga chapters never leave the artist's local device, simplifying compliance with corporate non-disclosure agreements and safeguarding proprietary IP from cloud interception.</li>
+<li><strong>Infrastructure Cost Elimination:</strong> The computational burden of massive matrix factorizations is offloaded from centralized corporate servers to distributed client hardware.</li>
+</ul>
+<hr />
+<h2 id="10-conclusion"><strong>10. Conclusion</strong></h2>
+<p>The deep learning pipeline for reference-guided manga colorization and animation represents a major transition in digital media production. Through Diffusion Transformers, flow matching, retrieval-augmented style patches, and point-driven coordinate conditioning, systems can automate style transfer and temporal synthesis — but fully automated workflows remain insufficient for professional production, and carry real legal exposure around training-data provenance.</p>
+<p>Mathematical optimization provides the deterministic, insulated counterpart: by formulating colorization as the minimization of quadratic cost functions bounded by screentone pattern-continuity, and reference transfer as Quadratic Programming or Entropic Regularized Optimal Transport, the industry can automate the most labor-intensive aspects of 2D production with pixel-perfect, auditable guarantees. Extending these principles into the temporal domain via Combinatorial Min-Cut/Max-Flow graph algorithms and ARAP mesh deformation achieves a level of exactitude in temporal tracking that pure diffusion models cannot natively provide.</p>
+<p>The two paradigms are strongest combined. Successful deployment relies on Human-in-the-Loop workflows that integrate visual nodes (ComfyUI), programmatic canvas and video timelines (Remotion), quadtree-accelerated deterministic solvers, and Direct Preference Optimization — channeling human feedback to refine generative output while falling back on deterministic optimization wherever legal, computational, or fidelity constraints demand it. By updating low-rank adapters (LoRAs), resolving local corrections via mathematically bounded optimization, and executing both through zero-latency client-side WebGPU architectures, these hybrid pipelines act as controlled assistants — accelerating the manga-to-anime pipeline while preserving artistic integrity, determinism where it matters, and the artist firmly in the loop.</p>
+<hr />
+<h2 id="works-cited"><strong>Works Cited</strong></h2>
+<h3 id="from-the-deep-learning-research-pass">From the deep-learning research pass</h3>
+<ol>
+<li>FlatMagic: Improving Flat Colorization through AI-driven Design for Digital Comic Professionals | Request PDF - ResearchGate, <a href="https://www.researchgate.net/publication/360331242_FlatMagic_Improving_Flat_Colorization_through_AI-driven_Design_for_Digital_Comic_Professionals">https://www.researchgate.net/publication/360331242_FlatMagic_Improving_Flat_Colorization_through_AI-driven_Design_for_Digital_Comic_Professionals</a></li>
+<li>The artificial cartoonist: key characteristics of ai-assisted sequential storytelling, <a href="https://revistas.ulusofona.pt/index.php/ijfma/article/view/10681/6290">https://revistas.ulusofona.pt/index.php/ijfma/article/view/10681/6290</a></li>
+<li>cGAN-based Manga Colorization Using a Single Training Image - arXiv, <a href="https://arxiv.org/abs/1706.06918">https://arxiv.org/abs/1706.06918</a></li>
+<li>arXiv:2412.11815v1 [cs.CV] 16 Dec 2024, <a href="https://arxiv.org/pdf/2412.11815">https://arxiv.org/pdf/2412.11815</a></li>
+<li>MangaNinja: Line Art Colorization with Precise Reference Following, <a href="https://www.themoonlight.io/en/review/manganinja-line-art-colorization-with-precise-reference-following">https://www.themoonlight.io/en/review/manganinja-line-art-colorization-with-precise-reference-following</a></li>
+<li>Image Referenced Sketch Colorization Based on Animation Creation Workflow - arXiv, <a href="https://arxiv.org/html/2502.19937v1">https://arxiv.org/html/2502.19937v1</a></li>
+<li>MangaNinja: Line Art Colorization with Precise Reference Following - arXiv, <a href="https://arxiv.org/html/2501.08332v1">https://arxiv.org/html/2501.08332v1</a></li>
+<li>Diffusion Model Alignment Using Direct Preference Optimization, <a href="https://cvpr.thecvf.com/virtual/2024/poster/31416">https://cvpr.thecvf.com/virtual/2024/poster/31416</a></li>
+<li>Closing the Domain Gap in Manga Colorization via Aligned Paired Dataset, <a href="https://openaccess.thecvf.com/content/WACV2025/papers/Golyadkin_Closing_the_Domain_Gap_in_Manga_Colorization_via_Aligned_Paired_WACV_2025_paper.pdf">https://openaccess.thecvf.com/content/WACV2025/papers/Golyadkin_Closing_the_Domain_Gap_in_Manga_Colorization_via_Aligned_Paired_WACV_2025_paper.pdf</a></li>
+<li>Closing the Domain Gap in Manga Colorization via Aligned Paired Dataset - WACV 2025 Open Access Repository, <a href="https://openaccess.thecvf.com/content/WACV2025/html/Golyadkin_Closing_the_Domain_Gap_in_Manga_Colorization_via_Aligned_Paired_WACV_2025_paper.html">https://openaccess.thecvf.com/content/WACV2025/html/Golyadkin_Closing_the_Domain_Gap_in_Manga_Colorization_via_Aligned_Paired_WACV_2025_paper.html</a></li>
+<li>Supplementary Materials for Closing the Domain Gap in Manga Colorization via Aligned Paired Dataset - CVF Open Access, <a href="https://openaccess.thecvf.com/content/WACV2025/supplemental/Golyadkin_Closing_the_Domain_WACV_2025_supplemental.pdf">https://openaccess.thecvf.com/content/WACV2025/supplemental/Golyadkin_Closing_the_Domain_WACV_2025_supplemental.pdf</a></li>
+<li>Region-Wise Correspondence Prediction between Manga Line Art Images - arXiv, <a href="https://arxiv.org/html/2509.09501v1">https://arxiv.org/html/2509.09501v1</a></li>
+<li>Not all Synthetic Datasets are Created Equal - Parallel Domain, <a href="https://paralleldomain.com/resources/not-all-synthetic-datasets-are-created-equal">https://paralleldomain.com/resources/not-all-synthetic-datasets-are-created-equal</a></li>
+<li>Domain Adaptation of Synthetic Driving Datasets for Real-World Autonomous Driving - arXiv, <a href="https://arxiv.org/abs/2302.04149">https://arxiv.org/abs/2302.04149</a></li>
+<li>pcleaner-cli · PyPI, <a href="https://pypi.org/project/pcleaner-cli/">https://pypi.org/project/pcleaner-cli/</a></li>
+<li>mokuro/README.md at master - GitHub, <a href="https://github.com/kha-white/mokuro/blob/master/README.md">https://github.com/kha-white/mokuro/blob/master/README.md</a></li>
+<li>Mokuro: Read Japanese manga with selectable text inside a browser, <a href="https://community.wanikani.com/t/mokuro-read-japanese-manga-with-selectable-text-inside-a-browser/60907">https://community.wanikani.com/t/mokuro-read-japanese-manga-with-selectable-text-inside-a-browser/60907</a></li>
+<li>MangaDiT: Reference-Guided Line Art Colorization with Hierarchical Attention in Diffusion Transformers - arXiv, <a href="https://arxiv.org/pdf/2508.09709">https://arxiv.org/pdf/2508.09709</a></li>
+<li>MangaNinja: Line Art Colorization with Precise Reference Following - CVF Open Access, <a href="https://openaccess.thecvf.com/content/CVPR2025/papers/Liu_MangaNinja_Line_Art_Colorization_with_Precise_Reference_Following_CVPR_2025_paper.pdf">https://openaccess.thecvf.com/content/CVPR2025/papers/Liu_MangaNinja_Line_Art_Colorization_with_Precise_Reference_Following_CVPR_2025_paper.pdf</a></li>
+<li>ali-vilab/MangaNinjia: Official implementation of "MangaNinja: Line Art Colorization with Precise Reference Following" - GitHub, <a href="https://github.com/ali-vilab/MangaNinjia">https://github.com/ali-vilab/MangaNinjia</a></li>
+<li>PointNet embedding references (superpoint n×p, d-dimensional) - ResearchGate / "Code Point Net from Scratch in Pytorch" - Medium / "PointNet implementation explained visually" - DataScienceUB</li>
+<li>MangaNinja: Line Art Colorization with Precise Reference Following - Zhiheng Liu, <a href="https://johanan528.github.io/MangaNinjia/">https://johanan528.github.io/MangaNinjia/</a></li>
+<li>Retrieval-Augmented Image Sequence Colorization - Junhao Zhuang, <a href="https://zhuang2002.github.io/ColorFlow/">https://zhuang2002.github.io/ColorFlow/</a></li>
+<li>Building Vision-Language Retrieval Systems with CLIP / How to Build Semantic Image Search with OpenAI CLIP / Text-to-Image and Image-to-Image Search Using CLIP - Pinecone, <a href="https://www.pinecone.io/learn/clip-image-search/">https://www.pinecone.io/learn/clip-image-search/</a></li>
+<li>Improved Video VAE for Latent Video Diffusion Model, <a href="https://cvpr.thecvf.com/virtual/2025/poster/33447">https://cvpr.thecvf.com/virtual/2025/poster/33447</a>; REED-VAE: RE-Encode Decode Training for Iterative Image Editing - arXiv, <a href="https://arxiv.org/html/2504.18989v1">https://arxiv.org/html/2504.18989v1</a></li>
+<li>MangaDiT: Reference-Guided Line Art Colorization with Hierarchical Attention - arXiv, <a href="https://arxiv.org/abs/2508.09709">https://arxiv.org/abs/2508.09709</a>; Official implementation - GitHub, <a href="https://github.com/CyberAgentAILab/MangaDiT">https://github.com/CyberAgentAILab/MangaDiT</a></li>
+<li>Add Color to Line Art Illustration - ComfyUI Workflow / awesome-comfyui / ComfyUI-AniDoc / Sketch2Manga - ComfyUI Node, <a href="https://github.com/dmMaze/sketch2manga/">https://github.com/dmMaze/sketch2manga/</a></li>
+<li>ColorizeDiffusion v2: Enhancing Reference-based Sketch Colorization - arXiv, <a href="https://arxiv.org/html/2504.06895v1">https://arxiv.org/html/2504.06895v1</a></li>
+<li>Using ControlNet in ComfyUI for Precise Controlled Image Generation, <a href="https://comfyui-wiki.com/en/tutorial/advanced/how-to-install-and-use-controlnet-models-in-comfyui">https://comfyui-wiki.com/en/tutorial/advanced/how-to-install-and-use-controlnet-models-in-comfyui</a></li>
+<li>Gradio Sketch tutorial; Creating an Image Editor Using CamanJS - Envato Tuts+; <code>blend_modes</code> package - Pythonhosted.org, <a href="https://pythonhosted.org/blend_modes/blend_modes.html">https://pythonhosted.org/blend_modes/blend_modes.html</a></li>
+<li>A Simple and Effective RL Method for Text-to-Image Fine-tuning - arXiv, <a href="https://arxiv.org/html/2503.00897v7">https://arxiv.org/html/2503.00897v7</a></li>
+<li>Uncertainty Driven Active Learning for Image Segmentation - arXiv, <a href="https://arxiv.org/html/2403.14002v1">https://arxiv.org/html/2403.14002v1</a>; Breaking the Barrier: Selective Uncertainty-Based Active Learning - ResearchGate</li>
+<li>Finetune Stable Diffusion Models with DDPO via TRL - Hugging Face, <a href="https://huggingface.co/blog/trl-ddpo">https://huggingface.co/blog/trl-ddpo</a></li>
+<li>Using Human Feedback to Fine-tune Diffusion Models - arXiv, <a href="https://arxiv.org/html/2311.13231v3">https://arxiv.org/html/2311.13231v3</a></li>
+<li>SDPO: Importance-Sampled Direct Preference Optimization - ResearchGate; D3PO: Preference-Based Alignment of Discrete Diffusion Models - arXiv, <a href="https://arxiv.org/html/2503.08295v1">https://arxiv.org/html/2503.08295v1</a></li>
+<li>Curriculum Direct Preference Optimization for Diffusion Models - CVF Open Access; D-Fusion / DSPO - OpenReview; Fine-Tuning Diffusion Generative Models via Rich Preference Optimization - arXiv, <a href="https://arxiv.org/html/2503.11720v4">https://arxiv.org/html/2503.11720v4</a></li>
+<li>LoRA-Adapted Diffusion Methods - Emergent Mind, <a href="https://www.emergentmind.com/topics/lora-adapted-diffusion-approach">https://www.emergentmind.com/topics/lora-adapted-diffusion-approach</a></li>
+<li>Comic Text Detector / manga-image-translator - GitHub, <a href="https://github.com/zyddnys/manga-image-translator">https://github.com/zyddnys/manga-image-translator</a></li>
+<li>Remotion: Create Videos Programmatically with React - YUV.AI Blog, <a href="https://yuv.ai/blog/remotion">https://yuv.ai/blog/remotion</a></li>
+<li>ONNX Runtime Web unleashes generative AI in the browser using WebGPU, <a href="https://opensource.microsoft.com/blog/2024/02/29/onnx-runtime-web-unleashes-generative-ai-in-the-browser-using-webgpu/">https://opensource.microsoft.com/blog/2024/02/29/onnx-runtime-web-unleashes-generative-ai-in-the-browser-using-webgpu/</a></li>
+</ol>
+<h3 id="from-the-mathematical-optimization-research-pass">From the mathematical-optimization research pass</h3>
+<ol>
+<li>Anime Studios Are Apologizing For Using AI In 2026 - Elite Animation Academy, <a href="https://eliteanimationacademy.com/2026/05/anime-studios-are-apologizing-for-using-ai-in-2026-heres-what-that-means-if-your-kid-loves-manga/">https://eliteanimationacademy.com/2026/05/anime-studios-are-apologizing-for-using-ai-in-2026-heres-what-that-means-if-your-kid-loves-manga/</a></li>
+<li>Wit Studio Apologizes After Being Caught Using Generative AI Background Art Again - Gizmodo, <a href="https://gizmodo.com/wit-studio-ai-anime-backlash-ascendance-of-a-bookworm-2000744962">https://gizmodo.com/wit-studio-ai-anime-backlash-ascendance-of-a-bookworm-2000744962</a></li>
+<li>Report on AI and Copyright Issues by Japanese Government, <a href="https://www.nagashima.com/wp-content/uploads/2024/03/ip_en_no4_1.pdf">https://www.nagashima.com/wp-content/uploads/2024/03/ip_en_no4_1.pdf</a></li>
+<li>Generative AI and Japanese Copyright Law: A Legal Risk Guide for Businesses, <a href="https://monolith.law/en/general-corporate/generative-ai-copyright-law-japan">https://monolith.law/en/general-corporate/generative-ai-copyright-law-japan</a></li>
+<li>Legal Framework - AiCopyright, <a href="https://aicopyright.com/legal-framework/">https://aicopyright.com/legal-framework/</a></li>
+<li>Worker Mobilizations around AI in Arts, Culture, and Media, <a href="https://creativelabourcriticalfutures.ca/resource-files/tracker-ai-mobilization-clcf.html">https://creativelabourcriticalfutures.ca/resource-files/tracker-ai-mobilization-clcf.html</a></li>
+<li>SketchDeco: Training-Free Latent Composition for Precise Sketch Colourisation - CVF Open Access, <a href="https://openaccess.thecvf.com/content/CVPR2026/papers/Utintu_SketchDeco_Training-Free_Latent_Composition_for_Precise_Sketch_Colourisation_CVPR_2026_paper.pdf">https://openaccess.thecvf.com/content/CVPR2026/papers/Utintu_SketchDeco_Training-Free_Latent_Composition_for_Precise_Sketch_Colourisation_CVPR_2026_paper.pdf</a></li>
+<li>Learning to generate line drawings that convey geometry and semantics - ResearchGate, <a href="https://www.researchgate.net/publication/363908416_Learning_to_generate_line_drawings_that_convey_geometry_and_semantics">https://www.researchgate.net/publication/363908416_Learning_to_generate_line_drawings_that_convey_geometry_and_semantics</a></li>
+<li>AniDoc: Animation Creation Made Easier - arXiv, <a href="https://arxiv.org/html/2412.14173v2">https://arxiv.org/html/2412.14173v2</a></li>
+<li>Workflow-Aware Structured Layer Decomposition for Illustration Production - arXiv, <a href="https://arxiv.org/html/2603.14925v1">https://arxiv.org/html/2603.14925v1</a></li>
+<li>Release Notes of ImageTrans | BasicCAT, <a href="https://www.basiccat.org/imagetrans/release-notes/">https://www.basiccat.org/imagetrans/release-notes/</a></li>
+<li>Colorization Using Optimization - Levin, Lischinski, Weiss (Toronto DGP), <a href="https://www.dgp.toronto.edu/~gontech/noback/colorization/Colorization%20Using%20Optimization.pdf">https://www.dgp.toronto.edu/~gontech/noback/colorization/Colorization%20Using%20Optimization.pdf</a>; also ResearchGate and Technion/HUJI mirrors, <a href="https://webee.technion.ac.il/people/anat.levin/papers/colorization-siggraph04.pdf">https://webee.technion.ac.il/people/anat.levin/papers/colorization-siggraph04.pdf</a>, <a href="https://www.cs.huji.ac.il/~yweiss/Colorization/colorization-siggraph04.pdf">https://www.cs.huji.ac.il/~yweiss/Colorization/colorization-siggraph04.pdf</a></li>
+<li>(PDF) Manga colorization - ResearchGate, <a href="https://www.researchgate.net/publication/220183450_Manga_colorization">https://www.researchgate.net/publication/220183450_Manga_colorization</a></li>
+<li>Reference-based Manga Colorization by Graph Correspondence Using Quadratic Programming - ResearchGate, <a href="https://www.researchgate.net/publication/273555353_Reference-based_Manga_Colorization_by_Graph_Correspondence_Using_Quadratic_Programming">https://www.researchgate.net/publication/273555353_Reference-based_Manga_Colorization_by_Graph_Correspondence_Using_Quadratic_Programming</a></li>
+<li>Optimal Flow Transport and its Entropic Regularization: a GPU-friendly matrix iterative algorithm for flow balance satisfaction - ICLR Proceedings, <a href="https://proceedings.iclr.cc/paper_files/paper/2025/file/4dac4a4cf3eea44eb9b192e88d1c754a-Paper-Conference.pdf">https://proceedings.iclr.cc/paper_files/paper/2025/file/4dac4a4cf3eea44eb9b192e88d1c754a-Paper-Conference.pdf</a></li>
+<li>RachelBlin/Colorization-optimal-transport - GitHub, <a href="https://github.com/RachelBlin/Colorization-optimal-transport">https://github.com/RachelBlin/Colorization-optimal-transport</a>; Immiscible color flows in optimal transport networks for image classification - Frontiers, <a href="https://www.frontiersin.org/journals/physics/articles/10.3389/fphy.2023.1089114/full">https://www.frontiersin.org/journals/physics/articles/10.3389/fphy.2023.1089114/full</a></li>
+<li>An Experimental Comparison of Min-Cut/Max-Flow Algorithms for Energy Minimization in Vision - Boykov &amp; Kolmogorov, <a href="https://pub.ista.ac.at/~vnk/papers/BK-PAMI04.pdf">https://pub.ista.ac.at/~vnk/papers/BK-PAMI04.pdf</a>; Graph Cuts in Vision and Graphics: Theories and Applications, <a href="http://luthuli.cs.uiuc.edu/~daf/courses/Optimization/Combinatorialpapers/Nikos-Yuri-Olga.pdf">http://luthuli.cs.uiuc.edu/~daf/courses/Optimization/Combinatorialpapers/Nikos-Yuri-Olga.pdf</a></li>
+<li>As-Rigid-As-Possible shape manipulation - ResearchGate, <a href="https://www.researchgate.net/publication/220184161_As-Rigid-As-Possible_shape_manipulation">https://www.researchgate.net/publication/220184161_As-Rigid-As-Possible_shape_manipulation</a></li>
+<li>AI Character Animation | Auto-Rig &amp; Animate 3D Models - Sloyd, <a href="https://sloyd.ai/animations">https://sloyd.ai/animations</a>; realtime-ai/live2d-agent - GitHub, <a href="https://github.com/realtime-ai/live2d-agent">https://github.com/realtime-ai/live2d-agent</a>; GoEnhance AI Live2D, <a href="https://www.goenhance.ai/video-effects/live-2d-animation">https://www.goenhance.ai/video-effects/live-2d-animation</a>; CartoonAlive: Towards Expressive Live2D Modeling from Single Portraits - arXiv, <a href="https://arxiv.org/html/2507.17327v1">https://arxiv.org/html/2507.17327v1</a></li>
+<li>Diffusion-DPO: Aligned Diffusion Models - Emergent Mind, <a href="https://www.emergentmind.com/topics/diffusion-dpo">https://www.emergentmind.com/topics/diffusion-dpo</a></li>
+<li>Self-Supervised Direct Preference Optimization for Text-to-Image Diffusion Models - NeurIPS, <a href="https://papers.neurips.cc/paper_files/paper/2025/file/03600ae6c3392fd65ad7c3a90c6f7ce8-Paper-Conference.pdf">https://papers.neurips.cc/paper_files/paper/2025/file/03600ae6c3392fd65ad7c3a90c6f7ce8-Paper-Conference.pdf</a></li>
+<li>Mind the Generative Details: Direct Localized Detail Preference Optimization for Video Diffusion Models - CVF/arXiv, <a href="https://arxiv.org/html/2601.04068v3">https://arxiv.org/html/2601.04068v3</a>; Discriminator-Free Direct Preference Optimization for Video Diffusion - arXiv, <a href="https://arxiv.org/html/2504.08542v1">https://arxiv.org/html/2504.08542v1</a>; VIPO: Visual Preference Optimization at Scale - ICLR Proceedings, <a href="https://proceedings.iclr.cc/paper_files/paper/2026/file/33bb58be3f0e903c75afa73d75b5c67e-Paper-Conference.pdf">https://proceedings.iclr.cc/paper_files/paper/2026/file/33bb58be3f0e903c75afa73d75b5c67e-Paper-Conference.pdf</a></li>
+<li>ToonComposer: Streamlining Cartoon Production with Generative Post-Keyframing - arXiv / OpenReview, <a href="https://arxiv.org/html/2508.10881v1">https://arxiv.org/html/2508.10881v1</a>, <a href="https://openreview.net/forum?id=28VE0XXyAa">https://openreview.net/forum?id=28VE0XXyAa</a></li>
+<li>ali-vilab/MangaNinjia [CVPR 2025 Highlight] - GitHub, <a href="https://github.com/ali-vilab/MangaNinjia">https://github.com/ali-vilab/MangaNinjia</a>; MagicColor: Multi-Instance Sketch Colorization - arXiv, <a href="https://arxiv.org/html/2503.16948v1">https://arxiv.org/html/2503.16948v1</a></li>
+<li>Optimization based grayscale image colorization - ResearchGate, <a href="https://www.researchgate.net/publication/220644071_Optimization_based_grayscale_image_colorization">https://www.researchgate.net/publication/220644071_Optimization_based_grayscale_image_colorization</a></li>
+<li>Client-Side AI Is Here: How WebGPU Transforms Your GPU Server Economics - 4D Pipeline, <a href="https://blog.4dpipeline.com/client-side-ai-is-here-how-webgpu-transforms-your-gpu-server-economics">https://blog.4dpipeline.com/client-side-ai-is-here-how-webgpu-transforms-your-gpu-server-economics</a>; Using WebGPU | onnxruntime, <a href="https://onnxruntime.ai/docs/tutorials/web/ep-webgpu.html">https://onnxruntime.ai/docs/tutorials/web/ep-webgpu.html</a></li>
+<li>Sakuga-42M: Hand-drawn Animation Dataset / Cartoon Animation Dataset - Emergent Mind, <a href="https://www.emergentmind.com/topics/sakuga-42m-dataset">https://www.emergentmind.com/topics/sakuga-42m-dataset</a>, <a href="https://www.emergentmind.com/topics/sakuga-42m">https://www.emergentmind.com/topics/sakuga-42m</a></li>
+<li>LVCD: Reference-based Lineart Video Colorization with Diffusion Models - ResearchGate, <a href="https://www.researchgate.net/publication/385949766_LVCD_Reference-based_Lineart_Video_Colorization_with_Diffusion_Models">https://www.researchgate.net/publication/385949766_LVCD_Reference-based_Lineart_Video_Colorization_with_Diffusion_Models</a></li>
+<li>SketchColour: Channel Concat Guided DiT-based Sketch-to-Colour Pipeline for 2D Animation - ResearchGate, <a href="https://www.researchgate.net/publication/393333527_SketchColour_Channel_Concat_Guided_DiT-based_Sketch-to-Colour_Pipeline_for_2D_Animation">https://www.researchgate.net/publication/393333527_SketchColour_Channel_Concat_Guided_DiT-based_Sketch-to-Colour_Pipeline_for_2D_Animation</a></li>
+<li>TimeColor: Flexible Reference Colorization via Temporal Concatenation - ResearchGate, <a href="https://www.researchgate.net/publication/399438526_TimeColor_Flexible_Reference_Colorization_via_Temporal_Concatenation">https://www.researchgate.net/publication/399438526_TimeColor_Flexible_Reference_Colorization_via_Temporal_Concatenation</a></li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "navigation.indexes", "search.highlight", "search.suggest", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

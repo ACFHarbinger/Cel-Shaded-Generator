@@ -1,0 +1,2376 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation portal for Manga Colorization & Animation (HITL deep learning + mathematical optimization).">
+      
+      
+        <meta name="author" content="ACFHarbinger">
+      
+      
+      
+        <link rel="prev" href="../krita_learning_alpha/">
+      
+      
+        <link rel="next" href="../reference_coloring/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Engine Architecture - Cel-Shaded-Generator Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#standalone-engine-architecture-roadmap" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Cel-Shaded-Generator Documentation" class="md-header__button md-logo" aria-label="Cel-Shaded-Generator Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cel-Shaded-Generator Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Engine Architecture
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ACFHarbinger/Cel-Shaded-Generator" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ACFHarbinger/Cel-Shaded-Generator
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../ARCHITECTURE/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Architecture
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../project_format/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Portable Project Format
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../style_bible_format/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Character Style Bible
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../model_packages/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Local Model Packages
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../DEVELOPMENT/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Development
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../TESTING/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Testing
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../DEPENDENCIES/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Dependencies
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../DEPENDENCY_POLICY/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Dependency Policy
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../DOCUMENTATION_STANDARDS/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Documentation Standards
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../BENCHMARKS/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Benchmarks
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../TROUBLESHOOTING/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Troubleshooting
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../GLOSSARY/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Glossary
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../adr/0001-record-architecture-decisions/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Architecture Decisions
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../ROADMAP/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Roadmap
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../CHANGELOG/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Changelog
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../research/Manga%20Colorization%20and%20Animation%20Research/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Research
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="https://github.com/ACFHarbinger/Image-Toolkit" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Image-Toolkit (parent project)
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Cel-Shaded-Generator Documentation" class="md-nav__button md-logo" aria-label="Cel-Shaded-Generator Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Cel-Shaded-Generator Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ACFHarbinger/Cel-Shaded-Generator" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ACFHarbinger/Cel-Shaded-Generator
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ARCHITECTURE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../project_format/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Portable Project Format
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../style_bible_format/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Character Style Bible
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../model_packages/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Local Model Packages
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DEVELOPMENT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../TESTING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DEPENDENCIES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dependencies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DEPENDENCY_POLICY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dependency Policy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DOCUMENTATION_STANDARDS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation Standards
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BENCHMARKS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benchmarks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../TROUBLESHOOTING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../GLOSSARY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_14" id="__nav_14_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture Decisions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Architecture Decisions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../adr/0001-record-architecture-decisions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Recording Decisions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../adr/0002-polyglot-module-layout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Superseded Polyglot Layout
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_15" id="__nav_15_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roadmap
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Roadmap
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ROADMAP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Master Roadmap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../krita_learning_alpha/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Krita Learning Alpha
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Engine Architecture
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Engine Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objective" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objective
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#near-term-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Near-term boundary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stable-contracts-before-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stable contracts before C++
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c-migration-candidates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C++ migration candidates
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployment-profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deployment profile
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#model-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Model packages
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-gates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture gates
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Architecture gates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gate-5-exception-2026-08-07" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gate 5 exception (2026-08-07)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference_coloring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference Coloring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../anime_animation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Anime Animation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../game_assets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Game Assets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CHANGELOG/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_17" >
+        
+          
+          <label class="md-nav__link" for="__nav_17" id="__nav_17_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Research
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_17_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_17">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Research
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../research/Manga%20Colorization%20and%20Animation%20Research/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Manga Colorization & Animation Research
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../research/Cel-Shaded%20Art%20Assistant%20Research/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cel-Shaded Art Assistant Research
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/ACFHarbinger/Image-Toolkit" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Image-Toolkit (parent project)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objective" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objective
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#near-term-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Near-term boundary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stable-contracts-before-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stable contracts before C++
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c-migration-candidates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C++ migration candidates
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployment-profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deployment profile
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#model-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Model packages
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-gates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture gates
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Architecture gates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gate-5-exception-2026-08-07" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gate 5 exception (2026-08-07)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="standalone-engine-architecture-roadmap">Standalone Engine Architecture Roadmap</h1>
+<h2 id="objective">Objective</h2>
+<p>Create a standalone, offline engine that can serve the Krita plugin first,
+Blender and future desktop clients later, and Image-Toolkit only through an
+adapter. C++ is the long-term engine language; Python remains the research and
+model-development environment.</p>
+<h2 id="near-term-boundary">Near-term boundary</h2>
+<p>The initial Python engine exposes typed jobs and results for analysis,
+redlining, colorization, and later animation. UI packages do not import private
+engine modules, and engine packages do not import Krita, Qt, or Image-Toolkit.</p>
+<p>Heavy or unstable native work should run in cancellable worker processes. This
+contains CUDA/BLAS/native-extension failures, enables resource scheduling, and
+avoids making one global process lock the permanent concurrency model.</p>
+<h2 id="stable-contracts-before-c">Stable contracts before C++</h2>
+<ul>
+<li>Versioned document, layer, stroke, lesson, rubric, review, redline, model,
+  job, progress, and provenance schemas.</li>
+<li>Explicit image layout, color space, alpha, coordinate, and ownership rules.</li>
+<li>Deterministic serialization and migrations.</li>
+<li>Cancellation, progress, diagnostics, and structured errors.</li>
+<li>Capability discovery for optional CUDA/models/plugins.</li>
+<li>Golden inputs and outputs for every ported algorithm.</li>
+</ul>
+<h2 id="c-migration-candidates">C++ migration candidates</h2>
+<p>Port by measured value, not language preference:</p>
+<ol>
+<li>Tiled image access, compositing, masks, and color conversion.</li>
+<li>Stroke/curve geometry and deterministic analyzers.</li>
+<li>Sparse optimization, region segmentation, correspondence, and deformation.</li>
+<li>Video frame transport and motion-aware processing.</li>
+<li>GPU scheduling and ONNX Runtime/TensorRT inference adapters.</li>
+<li>Import/export validation for Blender, Unity, and Unreal workflows.</li>
+</ol>
+<p>Use Python bindings for in-process research and a versioned local IPC service
+for application isolation. Keep the C ABI narrow enough that alternative
+language clients are possible without exposing C++ object ownership.</p>
+<h2 id="deployment-profile">Deployment profile</h2>
+<ul>
+<li>First platform: Kubuntu/KDE on x86-64.</li>
+<li>Default inference target: consumer NVIDIA GPU with 12 GB VRAM.</li>
+<li>Higher-memory 24 GB development hardware may enable optional models but may
+  not become an accidental baseline.</li>
+<li>CPU fallbacks are desirable for deterministic tools and diagnostics, but
+  heavyweight ML need not meet interactive targets on CPU in the first alpha.</li>
+<li>No mandatory account, network service, or silent download.</li>
+</ul>
+<h2 id="model-packages">Model packages</h2>
+<p>Each package declares identifier/version, compatible engine ABI, files and
+hashes, expected VRAM, license/provenance when known, execution provider, and
+capabilities. Built-in validated, community-described, and unverified local
+packages remain visibly distinct. Users retain the ability to install arbitrary
+models.</p>
+<h2 id="architecture-gates">Architecture gates</h2>
+<ol>
+<li><strong>Standalone Python:</strong> installable core and Krita client with no parent
+   imports or alias bootstrap.</li>
+<li><strong>Isolated jobs:</strong> cancellable worker protocol and crash recovery.</li>
+<li><strong>Measured native pilot:</strong> port one proven bottleneck and demonstrate a
+   representative improvement without changing output contracts.</li>
+<li><strong>C++ engine foundation:</strong> own stable document/compute services; Python
+   becomes a plugin/research worker.</li>
+<li><strong>Standalone editor decision:</strong> proceed only when Krita limitations are
+   demonstrated by validated workflows.</li>
+</ol>
+<h3 id="gate-5-exception-2026-08-07">Gate 5 exception (2026-08-07)</h3>
+<p>Gate 5's precondition has <strong>not</strong> been met — no Krita limitation has been
+demonstrated by a validated workflow. The owner made an explicit, informed
+decision to build a standalone full raster editor now anyway, ahead of that
+gate, rather than in response to a discovered limitation. This is recorded
+here so the history is honest: this is a scope decision, not evidence Krita
+has proven insufficient. The reference-coloring Krita Dockers (Character
+Colors, Line Art Segmentation, Chapter Queue, Learning Tutor) remain the
+primary, actively-developed host; the standalone editor is a second,
+independent host built on the same portable <code>project</code>/<code>colorization</code> core,
+not a replacement in progress.</p>
+<p><strong>Toolkit:</strong> PySide6, matching the existing <code>cel_shaded_generator_gui</code>
+workspace member (<code>gui/</code>) — the standalone editor is being built as new
+tabs/elements inside that same package rather than a third Qt-binding
+dependency.</p>
+<p><strong>First slice (issue #25, In review pending a manual desktop-app check):</strong>
+a canvas + layer-stack foundation — <code>logic/src/editor/</code>'s
+<code>LayerStack</code> (pure numpy, no Qt, mirrors the "portable contract first"
+pattern every other milestone in this project uses) plus a
+<code>ReferenceColoringTab</code> in <code>gui/</code> wiring a zoomable/pannable <code>LayerCanvas</code>
+to an add/remove/reorder/show-hide <code>LayerListPanel</code>. No paint tools, masks,
+segmentation, or palette preview yet — those are later slices built on this
+same foundation, the same way every Krita Docker was built on Krita's own
+layer model.</p>
+<p><strong>Second slice (issue #26, In review pending a manual desktop-app check):
+brush paint tool.</strong> <code>logic/src/editor/brush.py</code> adds <code>stamp_dot</code>/<code>stamp_line</code> —
+pure numpy, no Qt, a hard-edged circular brush composited with straight
+alpha "over", deliberately not anti-aliased so it stays simple and
+pixel-exact-testable; a softer brush is a later slice on the same contract.
+<code>LayerCanvas</code> gained an explicit Pan/Brush tool switch (<code>set_tool</code>) rather
+than overloading left-click, since <code>QGraphicsView.DragMode.ScrollHandDrag</code>
+already claims left-click-drag for panning; painting targets whichever
+layer <code>LayerListPanel</code> reports as selected (<code>layer_selected</code> signal, new).
+<code>ReferenceColoringTab</code> adds Pan/Brush radio buttons, a color-swatch button
+(<code>QColorDialog</code>), and a brush-size spin box. Still no masks, segmentation,
+or palette-preview UI — those remain later slices on this same foundation.</p>
+<p><strong>Third slice (issue #27, In review pending a manual desktop-app check):
+undo/redo.</strong> <code>logic/src/editor/history.py</code> adds <code>EditHistory</code>, a snapshot-based
+undo/redo stack bound to one <code>LayerStack</code> — callers call <code>record()</code>
+immediately before a discrete mutation, and <code>undo()</code>/<code>redo()</code> restore or
+reapply the full prior state, bounded by a <code>max_depth</code> that evicts the
+oldest entries. Deliberately snapshot-based rather than a command/diff log:
+the simplest deterministic contract that stays fully testable, since every
+canvas in this project is bounded with no infinite-undo requirement.
+<code>LayerStack.save_state()</code>/<code>load_state()</code> back this with a deep, in-place
+copy so the <code>LayerStack</code> object's identity survives an undo/redo — nothing
+needs to rebind to a new object. <code>LayerCanvas</code> records one checkpoint per
+brush stroke (at <code>mousePressEvent</code>, not per dot, so a whole stroke undoes
+as one step); <code>LayerListPanel</code> records one before each add/remove/reorder/
+visibility-toggle and gained a public <code>refresh()</code> to re-sync after an
+external mutation. <code>ReferenceColoringTab</code> creates one <code>EditHistory</code> per
+canvas and adds Undo/Redo buttons. Still no masks, segmentation, or
+palette-preview UI.</p>
+<p><strong>Fourth slice (issue #28, In review pending a manual desktop-app check):
+non-destructive layer masks.</strong> <code>Layer.mask</code> is an optional HxW uint8
+grayscale buffer (<code>None</code> when absent), validated to match the layer's
+pixel size. <code>LayerStack.add_mask</code>/<code>remove_mask</code> attach/detach a
+fully-opaque mask; <code>composite()</code> multiplies each layer's alpha by
+<code>mask / 255</code> before blending when present, the standard non-destructive
+mask convention every mainstream raster editor uses. <code>save_state()</code>/
+<code>load_state()</code> round-trip the mask too, so undo/redo (#27) covers mask
+edits for free without any changes there. <code>logic/src/editor/brush.py</code> adds
+<code>stamp_mask_dot</code>/<code>stamp_mask_line</code> -- grayscale variants sharing the RGBA
+brush's circular-clipping logic (extracted into <code>_clip_region</code>) but
+overwriting to a given intensity directly rather than alpha-blending
+(blending a mask against itself has no useful meaning).
+<code>LayerCanvas.set_mask_mode(True)</code> redirects Brush strokes to the active
+layer's mask, and is a no-op on a maskless layer rather than silently
+falling back to painting color. <code>LayerListPanel</code> gained Add Mask/Remove
+Mask buttons and a <code>(mask)</code> list-item suffix; <code>ReferenceColoringTab</code> gained
+an Edit Mask checkbox and a Mask value spin box. Still no segmentation or
+palette-preview UI; masks here are a general raster-editor primitive, not
+yet tied to the Krita-side semantic "material mask" concept.</p>
+<p><strong>Fifth slice (issue #29, In review pending a manual desktop-app check):
+line-art segmentation.</strong> <code>logic/src/editor/segmentation_tools.py</code> reuses
+<code>colorization.segmentation</code> (roadmap milestone 1, issue #19) directly
+rather than reimplementing it -- unlike the Krita plugin's
+<code>segmentation_masks.py</code>, which mirrors the same algorithm in pure Python
+for Krita's "no numpy" boundary constraint, the standalone GUI package
+already depends on numpy, so there is nothing to mirror.
+<code>close_line_gaps_in_layer</code> bridges small gaps in a layer's painted ink (its
+alpha channel) in place. <code>segment_layer_into_regions</code> segments a layer's
+painted ink into enclosed background regions, each becoming a new,
+distinctly colored layer stacked directly above the source; it never
+mutates the source layer, and regions that leak to the canvas border are
+correctly excluded (matching <code>colorization.segmentation.segment_regions</code>'s
+existing contract). <code>region_adjacency_for_regions</code> computes adjacency
+pairs from region layers' <em>current</em> alpha masks (not a re-derivation from
+the original line art), so it reflects any manual repainting since
+segmentation -- a building block for a possible later slice connecting the
+standalone editor to something like milestone 4's confidence-ranked
+correspondence workflow, not yet wired into any button.
+<code>ReferenceColoringTab</code> adds Close Line Gaps (with a Max gap spin box) and
+Segment Regions (with a Min region area spin box) buttons operating on the
+selected layer. Still no palette-preview or correspondence-assignment UI.</p>
+<p><strong>Sixth slice (issue #30, In review pending a manual desktop-app check):
+style-bible palette application.</strong> <code>logic/src/editor/palette_tools.py</code> reuses
+<code>colorization.style_bible</code> (roadmap milestone 2, issue #15) directly, the
+same way #29 reused <code>colorization.segmentation</code>. <code>resolve_palette_color</code>
+parses a material palette's <code>#RRGGBB</code> role into an RGB int tuple, raising
+for an unsupported role or an absent accent -- matching the Krita
+Character Colors Docker's existing "absent accents are not offered as
+preview roles" rule rather than silently substituting another role.
+<code>apply_palette_color_to_region</code> recolors a layer's currently-opaque pixels
+to that color in place, leaving its alpha/shape untouched -- the same
+"shape from segmentation/painting, color from the bible" split the Krita
+Docker's material masks use. <code>ReferenceColoringTab</code> adds Bind Style Bible
+(file dialog), a Material combo box, a Role combo box (dynamically
+excludes "accent" when absent), and an Apply Palette Color button
+operating on the selected layer -- works on any layer, not only ones
+<code>segment_layer_into_regions</code> created; there is no forced connection
+between the two slices yet. Still no correspondence-assignment (a
+persisted, propagatable region-to-material binding) or
+adjacency-suggested defaults; this is a direct "pick a material+role,
+click apply" action, not milestone 4's ranked-suggestion workflow.
+Connecting the two remains a possible later slice.</p>
+<p><strong>Seventh slice (issue #31, In review pending a manual desktop-app
+check): region-to-material correspondence assignment.</strong> New
+<code>logic/src/editor/correspondence_tools.py</code> reuses <code>colorization.correspondence</code>
+and <code>colorization.confidence</code> directly, the same way #29/#30 reused
+<code>colorization.segmentation</code>/<code>colorization.style_bible</code>, connecting the
+fifth slice's region adjacency (#29) to the sixth slice's palette
+application (#30) the way both slices' notes anticipated.
+<code>adjacency_agreement_by_material</code> mirrors the Krita Character Colors
+Docker's <code>_adjacency_agreement_by_material</code> (milestone 4, issue #24): the
+fraction of a region's adjacent regions already assigned to each
+material. <code>rank_material_candidates</code> combines that with
+<code>colorization.confidence.name_similarity</code> via <code>score_candidate</code>, matching
+<code>project.service.rank_correspondence_materials</code>'s signal combination, but
+always starts from the same fixed 0.5/0.5 weights <code>SignalWeights</code> itself
+starts from -- the standalone editor has no project binding yet, so there
+is no correction-learning step this slice; wiring one in is a later
+slice, after the standalone editor gains project persistence at all.
+<code>assign_region_correspondence</code> returns a copy of a <code>CorrespondenceSet</code>
+with one new region assignment, raising on a conflicting existing
+assignment, the same rule <code>CorrespondenceSet.propagate</code> enforces.
+<code>ReferenceColoringTab</code> adds a <strong>Suggest Material</strong> button (ranks
+candidates for the selected region layer and pre-selects the top one in
+the existing Material combo, never assigns anything) and an <strong>Assign
+Correspondence</strong> button (records the current Material/Role as that
+region's correspondence in an in-memory <code>CorrespondenceSet</code> tracked by
+the tab). Assignment stayed in-memory for the editing session only as of
+this slice -- the eighth slice below adds disk persistence. Applying the
+suggested material's palette color remains a separate explicit action
+(Apply Palette Color, #30) rather than automatic.</p>
+<p><strong>Eighth slice (issue #32, In review pending a manual desktop-app
+check): canvas document save/load.</strong> Every prior slice was in-memory
+only -- closing the app discarded all work. New <code>logic/src/editor/document_io.py</code>
+adds <code>save_document</code>/<code>load_document</code>: one <code>.npy</code> file per layer's pixel
+buffer (and mask, when present) plus a <code>manifest.json</code> describing layer
+order, identity, and flags. Deliberately <code>.npy</code> rather than PNG --
+<code>logic/src/editor/</code> has a strict "pure numpy, no Qt" boundary with no
+image-codec dependency (<code>layer_stack.py</code>, <code>brush.py</code>), and adding one
+(Pillow/Qt) just to persist arrays this module already owns as numpy
+would be new surface for no real benefit. <code>ReferenceColoringTab</code> gains
+<strong>Save Document</strong>/<strong>Open Document</strong> buttons (directory picker). Save
+Document also writes the tab's in-memory <code>CorrespondenceSet</code> via the
+already-existing <code>colorization.correspondence.save_correspondence_set</code>
+and its region-layer-id bookkeeping (<code>region_layers.json</code>) alongside the
+canvas, so the seventh slice's correspondence assignments and the fifth
+slice's region tracking survive a save/reload round trip. Open Document
+resets undo/redo history to the freshly loaded canvas; the bound style
+bible, if any, is left as-is, since a document does not carry its own
+bible reference. Not in scope as of this slice: autosave, recovery
+revisions for the canvas document itself (the correspondence set already
+got those for free from <code>colorization.correspondence</code>), or integration
+with <code>logic/src/project</code>'s learning-progress project model -- the standalone
+editor still has no <code>SignalWeights</code>/project binding, so correction
+learning (#24/#31) remains unavailable here.</p>
+<p><strong>Ninth slice (issue #33, In review pending a manual desktop-app
+check): canvas document recovery-revision rotation.</strong> The eighth slice
+gave the canvas document no protection against an accidental overwrite --
+Save Document into an existing folder silently discarded the previous
+state, unlike <code>colorization.correspondence</code>/<code>colorization.style_bible</code>'s
+own bounded <code>_rotate_recovery</code> contract on their JSON assets.
+<code>document_io.save_document</code> gained a <code>recovery_revisions</code> keyword
+(default 10, validated to <code>1..100</code> matching <code>CorrespondenceSet</code>/
+<code>CharacterStyleBible</code>'s own bound): whenever a document already exists at
+the target directory, its prior on-disk state -- the whole directory,
+manifest plus every layer's <code>.npy</code> files, since a document is multiple
+files rather than the single JSON file <code>_rotate_recovery</code> handles
+elsewhere -- rotates into <code>&lt;directory&gt;/.recovery/1..recovery_revisions</code>
+before the new save overwrites it; the oldest revision is evicted past
+the bound. A first save into an empty directory creates no <code>.recovery/</code>,
+since there is nothing to protect yet. No restore API, matching the
+existing scope of <code>colorization.correspondence</code>/<code>colorization.style_bible</code>'s
+own rotation -- each <code>.recovery/&lt;n&gt;/</code> is itself a valid document
+directory <code>load_document</code> can read directly, so recovering one is a
+manual copy for now. No <code>ReferenceColoringTab</code> changes were needed: Save
+Document already calls <code>save_document</code> with the new default, so rotation
+is automatic and transparent.</p>
+<p><strong>Tenth slice (issue #34, In review pending a manual desktop-app
+check): bind a portable project for <code>SignalWeights</code> correction
+learning.</strong> Owner-directed follow-up to the seventh/eighth/ninth slices:
+bind the standalone editor's correspondence assignment into a portable
+<code>project</code> (<code>logic/src/project</code>, the same package the Krita tutor's lesson flow
+uses) so it benefits from <code>SignalWeights</code> correction learning, the same
+way the Krita Character Colors Docker's milestone-4 workflow (#24) does
+-- closing the gap the seventh slice's notes left open. New
+<code>project.create_project(directory, *, title)</code> in
+<code>logic/src/project/service.py</code>: a bare project manifest with no
+exercise/attempt. <code>create_exercise_project</code> is the Krita tutor's own
+entry point and always seeds a lesson attempt; hosts that only need to
+bind style bibles/correspondence sets (the standalone editor) have no
+attempt to seed, and <code>Project.progress</code>/<code>document_asset</code> were already
+optional in the schema -- this is the same manifest shape without the
+tutor-specific defaults. <code>ReferenceColoringTab</code> gains <strong>New
+Project</strong>/<strong>Bind Project</strong> buttons. Once a project is bound: <strong>Bind
+Style Bible</strong> also attaches the bible into the project
+(<code>upsert_project_style_bible</code>, tracked as <code>_bible_asset_path</code>);
+<strong>Suggest Material</strong> ranks via <code>project.rank_correspondence_materials</code>
+(using the project's learned <code>SignalWeights</code>) instead of the fixed
+0.5/0.5 local weights, keeping the ranked candidates; <strong>Assign
+Correspondence</strong> persists the updated correspondence set into the
+project (<code>upsert_project_correspondence_set</code>) and reports the artist's
+choice to <code>record_correspondence_choice</code>, so <code>SignalWeights</code> learn from
+it. Without a bound project, everything behaves exactly as before
+(in-memory, fixed weights) -- purely additive, no behavior change for
+the unbound case. Not in scope as of this slice: binding the canvas
+document itself (the <code>.npy</code>-per-layer format from #32/#33) into the
+project's asset model -- the eleventh slice below closes that gap.</p>
+<p><strong>Eleventh slice (issue #35, In review pending a manual desktop-app
+check): attach canvas documents into a bound project.</strong> Follow-up to
+the tenth slice: the canvas pixel document itself was explicitly left
+out of the project's asset model there. <code>logic/src/project/model.py</code> bumps
+<code>CURRENT_SCHEMA_VERSION</code> to 14, adds <code>Project.editor_document_assets:
+list[str]</code> with the same uniqueness/safe-relative-path validation
+<code>style_bible_assets</code>/<code>correspondence_set_assets</code> already get, and a
+migration default (<code>[]</code>) for older manifests. <code>logic/src/project/service.py</code>
+adds <code>attach_editor_document</code>/<code>detach_editor_document</code>: unlike
+<code>attach_style_bible</code>/<code>attach_correspondence_set</code>, the asset is a
+directory (<code>editor.document_io.save_document</code>'s <code>manifest.json</code> + per-
+layer <code>.npy</code> files), not a single <code>colorization</code>-loadable file -- this
+package stays decoupled from <code>editor</code>'s exact on-disk format, the same
+way an exercise attempt's opaque <code>document_asset</code> <code>.kra</code> path is never
+opened by this package either, so only directory existence and path
+safety are validated here. <code>ReferenceColoringTab</code>'s Save Document now
+attaches the saved directory as a project asset whenever it's saved
+inside a bound project's own directory; saving elsewhere still works
+exactly as before, just untracked by the project manifest.</p>
+<p><strong>Twelfth slice (issue #36, In review pending a manual desktop-app
+check): browse and reopen project-bound assets.</strong> UX follow-up to the
+tenth/eleventh slices: once a project is bound, its already-attached
+canvas documents and style bibles had no way to be reopened/reloaded
+except by re-navigating a raw file dialog to the exact subpath each
+time -- the same convenience gap the Krita Character Colors Docker's own
+bible dropdown (<code>_refresh_bibles</code>) already solves for its lesson-flow
+projects. <code>ReferenceColoringTab</code> gains two combo boxes, <strong>Project
+Documents</strong> and <strong>Project Bibles</strong>, populated from the bound project's
+<code>editor_document_assets</code>/<code>style_bible_assets</code> (<code>project.load_project</code>)
+whenever a project is created/bound, or a new document/bible gets
+attached. Two new buttons: <strong>Open Selected Document</strong> reopens the
+selected <code>Project Documents</code> entry via the same path the file-dialog
+Open Document flow uses (extracted into a shared
+<code>_load_document_from_path</code> helper), no dialog needed; <strong>Load Selected
+Bible</strong> loads the selected <code>Project Bibles</code> entry via the same path the
+file-dialog Bind Style Bible flow uses (extracted into a shared
+<code>_apply_loaded_style_bible</code> helper), no dialog needed, and sets
+<code>_bible_asset_path</code> directly since it's already a project-relative
+asset path (no re-attach needed). Pure refactor-and-extend of existing
+behavior -- the file-dialog-driven Open Document/Bind Style Bible flows
+are unchanged and still work with no project bound.</p>
+<p><strong>Thirteenth slice (issue #37, In review pending a manual desktop-app
+check): soft/anti-aliased brush hardness.</strong> Fulfills the note left in
+the second slice's own docstring since it landed: "a softer brush is a
+later slice on the same <code>stamp_*</code> contract." <code>logic/src/editor/brush.py</code> adds
+<code>_circular_falloff(radius, hardness)</code> -- per-pixel coverage in
+<code>[0, 1]</code>: fully opaque within <code>hardness * radius</code> of the center, then
+linearly fading to transparent at <code>radius</code>; <code>hardness=1.0</code> is
+pixel-identical to the existing hard <code>_circular_mask</code>.
+<code>_clip_region</code> is generalized to take a brush coverage array directly
+(bool or float) instead of always computing the hard circular mask
+internally, so hard and soft stamping share one clipping
+implementation. <code>_blend_color_over_weighted</code> is the soft-brush
+counterpart of <code>_blend_color_over</code>, scaling the stamped color's alpha
+per-pixel by the coverage array before straight-alpha "over" blending.
+New <code>stamp_dot_soft</code>/<code>stamp_line_soft</code> mirror the existing hard
+<code>stamp_dot</code>/<code>stamp_line</code> signatures plus a <code>hardness: float</code> parameter.
+Mask painting (<code>stamp_mask_dot</code>/<code>stamp_mask_line</code>) is unchanged and has
+no soft variant -- alpha-blending a mask against itself has no useful
+meaning, so a soft mask edit isn't a well-defined concept yet.
+<code>LayerCanvas</code> gains <code>set_brush_hardness</code>/<code>brush_hardness</code> (default
+<code>1.0</code>, unchanged prior behavior) and dispatches to the soft stamping
+functions only when hardness <code>&lt; 1.0</code>, keeping the hard-brush path
+byte-identical to before for the default case. <code>ReferenceColoringTab</code>
+adds a Hardness spin box (<code>0.0</code>-<code>1.0</code>, step <code>0.05</code>) next to the
+existing brush Size control.</p>
+<p><strong>Fourteenth slice (issue #38, In review pending a manual desktop-app
+check): eraser tool.</strong> A natural raster-editor primitive still missing
+after the brush (second slice) and its soft/hardness variant
+(thirteenth slice). <code>logic/src/editor/brush.py</code> adds <code>_erase_alpha(region,
+weight)</code> -- reduces <code>region</code>'s alpha channel in place by a <code>[0, 1]</code>
+coverage array (<code>new_alpha = alpha * (1 - weight)</code>); RGB is left
+untouched. This needs its own compositing rather than reusing
+<code>stamp_*</code> with a transparent color, since an "over" blend with a fully
+transparent top color is a no-op, not an erase. New <code>erase_dot</code>/
+<code>erase_line</code> share the same circular/falloff coverage
+(<code>_circular_mask</code>/<code>_circular_falloff</code>) as the existing hard/soft brush,
+with a <code>hardness</code> parameter mirroring <code>stamp_dot_soft</code>/<code>stamp_line_soft</code>.
+Mask painting is unaffected and has no eraser variant -- painting a
+mask to 0 already <em>is</em> erasing it. <code>LayerCanvas</code> accepts <code>"eraser"</code> as
+a third explicit tool (alongside <code>"pan"</code>/<code>"brush"</code>), sharing the Brush
+tool's <code>NoDrag</code> mouse handling and the existing brush radius/hardness
+controls, but calling <code>erase_dot</code>/<code>erase_line</code> instead of the
+color-stamping functions. Mask mode ignores the Eraser tool selection
+and keeps its own direct-overwrite mask painting either way.
+<code>ReferenceColoringTab</code> adds an Eraser radio button next to the
+existing Pan/Brush ones.</p>
+<p><strong>Fifteenth slice (issue #39, In review pending a manual desktop-app
+check): per-layer opacity and blend mode UI.</strong> <code>LayerMeta.opacity</code>/
+<code>blend_mode</code> have been part of <code>LayerStack.composite()</code> since the very
+first slice (issue #25), but there was never any UI to set either --
+every layer was stuck at opacity 1.0 and blend mode "normal".
+<code>LayerListPanel</code> gains an Opacity spin box (<code>0.0</code>-<code>1.0</code>, step <code>0.05</code>)
+and a Blend Mode combo (populated from <code>editor.VALID_BLEND_MODES</code>,
+newly exported from <code>editor/__init__.py</code>), shown below the existing
+mask buttons. Both reflect the <em>selected</em> layer's current values --
+updated on every selection change, on <code>set_layer_stack</code>, and on
+<code>refresh()</code> (so undo/redo stays in sync) -- and are disabled when
+nothing is selected. Changing either edits the selected layer's
+<code>LayerMeta</code> in place, records an undo checkpoint first (reusing
+<code>LayerStack.save_state()</code>/<code>load_state()</code>, which already round-trip
+opacity/blend mode, so undo/redo needed no changes), and emits the
+existing <code>layers_changed</code> signal so the bound canvas re-renders.</p>
+<p><strong>Sixteenth slice (issue #40, In review pending a manual desktop-app
+check): propagate correspondence to explicit target regions.</strong> Closes
+a gap the seventh/tenth slices left open: the Krita Character Colors
+Docker's Propagate Correspondence action (milestone C4.1, issue #21)
+was never brought over to the standalone editor, even though the
+underlying <code>colorization.correspondence.CorrespondenceSet.propagate</code>
+it uses was already available. <code>logic/src/editor/correspondence_tools.py</code>
+extracts <code>adjacent_region_ids(region_id, adjacency_pairs)</code> out of
+<code>adjacency_agreement_by_material</code> (same logic, now reusable) and
+exports it. <code>ReferenceColoringTab</code> adds a Propagate Correspondence
+button: takes the selected region layer's existing correspondence
+entry as the source, suggests (pre-fills, never auto-applies) adjacent
+regions as targets via <code>adjacent_region_ids</code>, prompts for an explicit
+comma-separated target list the artist can edit, and calls
+<code>CorrespondenceSet.propagate</code> directly -- mirroring the Krita docker's
+own flow exactly, including its conflict handling (a target already
+assigned to a different material is reported, never silently
+overwritten). Persists to the bound project (if any) the same way
+Assign Correspondence does. Never recolors anything itself, matching
+the existing "assignment vs. recoloring are separate actions" split
+from the seventh slice.</p>
+<p><strong>Seventeenth slice (issue #49, In review pending a manual desktop-app
+check): detach project documents/bibles.</strong> Closes a gap the
+eleventh/twelfth slices left open: <code>project.attach_editor_document</code>/
+<code>upsert_project_style_bible</code> wired the attach side of Project
+Documents/Project Bibles, and <code>project.detach_editor_document</code>/
+<code>detach_style_bible</code> already existed in <code>src/project/service.py</code>, but
+nothing in the standalone editor ever called them. <code>ReferenceColoringTab</code>
+adds Detach Selected Document/Detach Selected Bible buttons next to the
+existing Project Documents/Project Bibles combos. Both remove only the
+manifest binding -- the underlying document directory or bible file is
+never deleted, matching those functions' own "detach never deletes"
+contract. Detaching the currently-loaded bible also clears
+<code>_bible_asset_path</code>, so a subsequent Suggest Material falls back to the
+fixed-weight local ranking (seventh slice's behavior) instead of looking
+up a <code>SignalWeights</code> entry for a bible the project no longer tracks.</p>
+<p><strong>Eighteenth slice (issue #50, In review pending a manual desktop-app
+check): load a project's existing correspondence set on bind.</strong> Closes
+a gap surfaced while auditing project-asset symmetry after the
+seventeenth slice: New Project/Bind Project populated Project
+Documents/Project Bibles from the project's asset lists, but never
+loaded the project's own bound correspondence set into memory --
+reopening an existing project silently lost its correspondence
+assignments until the artist re-triggered a save via Assign/Propagate
+Correspondence. <code>ReferenceColoringTab._refresh_project_asset_combos</code>
+(already the "sync tab state to bound project" call site both New
+Project and Bind Project use) now also loads the project's
+correspondence set, if any, via
+<code>colorization.correspondence.load_correspondence_set</code>. Unlike
+documents/bibles, a project has at most one correspondence set in this
+editor's usage (always saved under the same fixed id via
+<code>upsert_project_correspondence_set</code>), so there is nothing to pick from
+a combo the way documents/bibles need -- binding or creating a project
+just makes an existing one available immediately, mirroring what Open
+Document already does for a document's own sidecar
+<code>correspondence.json</code>. Binding a different project correctly clears any
+previously-loaded correspondence set rather than carrying it over.</p>
+<p><strong>Nineteenth slice (issue #51, In review pending a manual desktop-app
+check): New Canvas resets correspondence set and region-layer
+bookkeeping.</strong> Closes a gap directly adjacent to the seventeenth/
+eighteenth slices' correspondence-lifecycle audit: <code>_new_canvas</code>
+replaced the layer stack and undo/redo history for a fresh blank
+canvas, but never reset <code>_correspondence_set</code> or <code>_region_layer_ids</code>.
+Those two fields carried over from whatever document or project bind
+had populated them previously, so a brand-new, unrelated canvas could
+silently inherit a prior document's region-to-material correspondence
+assignments and region-layer ids -- the next Save Document on that new
+canvas would then write a stale <code>correspondence.json</code> describing
+regions that don't exist on the new layer stack at all.
+<code>ReferenceColoringTab._new_canvas</code> now resets both fields, matching
+what <code>_load_document_from_path</code> already does when opening a real
+document (load fresh state, or <code>None</code>/<code>[]</code> if the document has none).</p>
+<p><strong>Twentieth slice (issue #52, In review pending a manual desktop-app
+check): composite PNG export.</strong> The standalone editor now has an Export PNG
+action beside Save/Open Document. It flattens the visible <code>LayerStack</code> through
+the existing compositor, preserving transparency and the effects of masks,
+per-layer opacity, and normal/multiply blend modes, then writes a standard
+RGBA PNG. Export never mutates the editable stack or its document sidecars.
+The Qt test covers dimensions, pixel values, and status reporting; a manual
+desktop check must still confirm the resulting PNG opens correctly in an image
+viewer and visually matches the canvas.</p>
+<p><strong>Twenty-first slice (issue #53, In review pending a manual desktop-app
+check): import an image as an editable layer.</strong> ReferenceColoringTab adds
+Import Image Layer beside the document/export actions. It accepts common
+Qt-readable raster formats, converts them to RGBA, requires dimensions to
+match the current canvas, and appends the pixels as a newly named layer. The
+mutation records one undo checkpoint, selects the new layer, and refreshes the
+canvas; invalid or mismatched input leaves the stack untouched. Manual review
+must import a transparent image, confirm alpha and pixels match, undo the
+import, and confirm a dimension mismatch reports an error without adding a
+layer. If all checks pass, the issue can be closed; otherwise return it to In
+progress with the failing image and dimensions.</p>
+<p><strong>Twenty-second slice (issue #54, In review pending a manual desktop-app
+check): duplicate a selected layer.</strong> <code>LayerStack.duplicate_layer</code> and the
+layer panel's Duplicate Layer action insert a deep copy immediately above the
+source. Pixel buffers and masks are independent copies; visibility, opacity,
+blend mode, and ordering are retained. The duplicate gets a fresh id and is
+selected, while the mutation records one undo checkpoint. Manual review must
+duplicate a masked/partially transparent layer, edit the copy to confirm the
+source is unchanged, and undo to confirm both the copy and its edits disappear.
+If those checks pass, close the issue; otherwise return it to In progress with
+the failing layer state.</p>
+<p><strong>Twenty-fourth slice (issue #56, In review pending a manual desktop-app
+check): clear a selected layer.</strong> <code>LayerStack.clear_layer</code> zeroes the selected
+RGBA buffer and optional mask without changing any layer metadata. The layer
+panel exposes Clear Layer and records one undo checkpoint before the mutation.
+Manual review must clear a painted, masked layer, confirm the canvas becomes
+transparent, then undo and confirm both pixels and mask return. If metadata or
+compositing changes unexpectedly, return the issue to In progress; otherwise
+close it after the check.</p>
+<p><strong>Twenty-fifth slice (issue #57, In review pending a manual desktop-app
+check): merge the selected layer down.</strong> <code>LayerStack.merge_down</code> composites the
+selected layer with its immediate lower neighbor using the existing mask,
+opacity, visibility, and blend-mode rules, stores the flattened pixels on the
+lower layer, and removes the selected layer. The panel records one undo
+checkpoint; merging the bottom layer is a no-op. Manual review must merge
+semi-transparent and masked content, confirm the visible result matches the
+pre-merge canvas, then undo and confirm both original layers return. If the
+result differs, return the issue to In progress with the layer settings.</p>
+<p><strong>Twenty-third slice (issue #55, In review pending a manual desktop-app
+check): rename a selected layer.</strong> <code>LayerStack.rename_layer</code> validates and
+updates only the selected layer's name; the layer panel exposes Rename Layer
+through a text dialog, refreshes the list, and records one undo checkpoint.
+Pixels, masks, ordering, visibility, opacity, and blend mode are untouched.
+Manual review must rename a painted/imported layer, confirm its pixels and
+compositing are unchanged, then undo and confirm the old name returns. A blank
+or cancelled name must leave the layer unchanged; otherwise return the issue
+to In progress with the failing input.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "navigation.indexes", "search.highlight", "search.suggest", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

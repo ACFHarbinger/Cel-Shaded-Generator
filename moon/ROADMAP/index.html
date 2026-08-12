@@ -1,0 +1,2164 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation portal for Manga Colorization & Animation (HITL deep learning + mathematical optimization).">
+      
+      
+        <meta name="author" content="ACFHarbinger">
+      
+      
+      
+        <link rel="prev" href="../../adr/0002-polyglot-module-layout/">
+      
+      
+        <link rel="next" href="../roadmaps/krita_learning_alpha/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Master Roadmap - Cel-Shaded-Generator Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cel-shaded-generator-product-roadmap" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Cel-Shaded-Generator Documentation" class="md-header__button md-logo" aria-label="Cel-Shaded-Generator Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cel-Shaded-Generator Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Master Roadmap
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ACFHarbinger/Cel-Shaded-Generator" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ACFHarbinger/Cel-Shaded-Generator
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../ARCHITECTURE/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Architecture
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../project_format/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Portable Project Format
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../style_bible_format/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Character Style Bible
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../model_packages/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Local Model Packages
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../DEVELOPMENT/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Development
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../TESTING/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Testing
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../DEPENDENCIES/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Dependencies
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../DEPENDENCY_POLICY/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Dependency Policy
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../DOCUMENTATION_STANDARDS/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Documentation Standards
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../BENCHMARKS/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Benchmarks
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../TROUBLESHOOTING/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Troubleshooting
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../GLOSSARY/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Glossary
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../adr/0001-record-architecture-decisions/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Architecture Decisions
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Roadmap
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../CHANGELOG/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Changelog
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../research/Manga%20Colorization%20and%20Animation%20Research/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Research
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="https://github.com/ACFHarbinger/Image-Toolkit" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Image-Toolkit (parent project)
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Cel-Shaded-Generator Documentation" class="md-nav__button md-logo" aria-label="Cel-Shaded-Generator Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Cel-Shaded-Generator Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ACFHarbinger/Cel-Shaded-Generator" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ACFHarbinger/Cel-Shaded-Generator
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ARCHITECTURE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../project_format/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Portable Project Format
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../style_bible_format/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Character Style Bible
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model_packages/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Local Model Packages
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DEVELOPMENT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TESTING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DEPENDENCIES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dependencies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DEPENDENCY_POLICY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dependency Policy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DOCUMENTATION_STANDARDS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation Standards
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../BENCHMARKS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benchmarks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TROUBLESHOOTING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GLOSSARY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_14" id="__nav_14_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture Decisions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Architecture Decisions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/0001-record-architecture-decisions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Recording Decisions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/0002-polyglot-module-layout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Superseded Polyglot Layout
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_15" id="__nav_15_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roadmap
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Roadmap
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Master Roadmap
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Master Roadmap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#product-direction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Product direction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#product-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Product principles
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#roadmap-at-a-glance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Roadmap at a glance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-0-standalone-foundation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 0 — standalone foundation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-1-krita-learning-alpha" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 1 — Krita learning alpha
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-2-reference-consistent-coloring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 2 — reference-consistent coloring
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-3-anime-animation-assistance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 3 — anime animation assistance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-4-game-assets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 4 — game assets
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-5-standalone-desktop-editor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 5 — standalone desktop editor
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../roadmaps/krita_learning_alpha/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Krita Learning Alpha
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../roadmaps/engine_architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Engine Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../roadmaps/reference_coloring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference Coloring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../roadmaps/anime_animation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Anime Animation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../roadmaps/game_assets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Game Assets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CHANGELOG/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_17" >
+        
+          
+          <label class="md-nav__link" for="__nav_17" id="__nav_17_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Research
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_17_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_17">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Research
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../research/Manga%20Colorization%20and%20Animation%20Research/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Manga Colorization & Animation Research
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../research/Cel-Shaded%20Art%20Assistant%20Research/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cel-Shaded Art Assistant Research
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/ACFHarbinger/Image-Toolkit" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Image-Toolkit (parent project)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#product-direction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Product direction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#product-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Product principles
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#roadmap-at-a-glance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Roadmap at a glance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-0-standalone-foundation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 0 — standalone foundation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-1-krita-learning-alpha" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 1 — Krita learning alpha
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-2-reference-consistent-coloring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 2 — reference-consistent coloring
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-3-anime-animation-assistance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 3 — anime animation assistance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-4-game-assets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 4 — game assets
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-5-standalone-desktop-editor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 5 — standalone desktop editor
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="cel-shaded-generator-product-roadmap">Cel-Shaded-Generator Product Roadmap</h1>
+<h2 id="product-direction">Product direction</h2>
+<p>Cel-Shaded-Generator is an offline-first assistant for learning and producing
+anime-style art, cel-shaded animation, manga colorization, and game assets. It
+must augment the artist rather than silently replace their work: generated
+changes are previews until explicitly accepted, every accepted change is
+undoable, and automation can be reduced or disabled in settings.</p>
+<p>The first user is a returning complete beginner. The first supported platform
+is Linux (Kubuntu/KDE), initially as a Krita plugin. Browser and mobile clients
+are not current requirements. The long-term product may become a standalone
+desktop editor, but it must earn that expansion with a polished narrow alpha.</p>
+<h2 id="product-principles">Product principles</h2>
+<ol>
+<li><strong>Teach, do not merely score.</strong> Feedback explains what was observed, why it
+   matters, how to correct it, and what exercise should come next.</li>
+<li><strong>Measure learning.</strong> Success means repeated attempts improve, not that a
+   model produces an attractive replacement image.</li>
+<li><strong>Artist remains in control.</strong> Analysis is on demand in the alpha. Redlines
+   and suggestions live on separate layers and require explicit acceptance.</li>
+<li><strong>Local and offline by default.</strong> Core workflows run without an account or
+   network connection. Model installation is explicit and never silent.</li>
+<li><strong>Open model ecosystem.</strong> Built-in models are documented and validated, but
+   users may install arbitrary community or local models with clear trust and
+   license metadata.</li>
+<li><strong>Standalone boundaries.</strong> Image-Toolkit integration is an adapter; the core
+   engine, project model, and Krita plugin may not depend on Image-Toolkit
+   internals.</li>
+<li><strong>Prototype before porting.</strong> Python remains useful for research. Proven,
+   profiled kernels and stable domain services migrate to a long-term C++
+   engine.</li>
+</ol>
+<h2 id="roadmap-at-a-glance">Roadmap at a glance</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Outcome</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Truthful, installable standalone foundation</td>
+<td>Complete</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Krita anime head-and-face learning alpha</td>
+<td>In progress (A1 complete)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Reference-consistent character coloring</td>
+<td>In progress (milestones 1–3 done)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Anime frame-by-frame animation assistance</td>
+<td>Deferred</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2D and 3D game-asset workflows</td>
+<td>Deferred</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Standalone professional desktop application</td>
+<td>Conditional</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Tablet/mobile editing</td>
+<td>Far future</td>
+</tr>
+</tbody>
+</table>
+<h2 id="phase-0-standalone-foundation">Phase 0 — standalone foundation</h2>
+<p>This phase blocks the alpha. It is intentionally about product integrity, not
+new algorithms.</p>
+<ul>
+<li>✅ Replace template-era README, contributing, agent, benchmark,
+  setup, testing, dependency, troubleshooting, and architecture-portal
+  documentation with the real project state.</li>
+<li>✅ Replace the placeholder architecture document with the real current and
+  target boundaries.</li>
+<li>✅ Adopt conventional installable packages and remove dynamic alias
+  bootstrapping. The core domain packages are flattened directly under <code>logic/src/</code>;
+  the GUI retains its distinct <code>csg_gui</code> client namespace.</li>
+<li>✅ Remove imports from <code>backend.src.*</code> and the parent <code>gui.src.*</code> package.</li>
+<li>✅ Make the current GUI an explicit workspace client of the core package.</li>
+<li>✅ Run core and headless GUI tests in CI, build both wheels, and smoke-test
+  the installed packages and desktop composition in a clean environment.</li>
+<li>✅ Define a versioned local project/exercise/progress data model, portable
+  project folders, bounded multi-revision autosave, opt-in artwork retention,
+  separate global learner profiles, and deterministic migration policy.</li>
+<li>✅ Establish deterministic synthetic correctness fixtures, committed goldens,
+  anonymized latency/Python-memory baselines, and a separate manual benchmark
+  workflow. Add real-art perceptual fixtures and native/GPU memory capture as
+  their respective workloads land; current data does not justify a C++ port.</li>
+<li>✅ Contain native-library crashes behind spawned, killable workers with
+  adaptive user-capped timeouts, cancellation, restart-on-next-job behavior,
+  and metadata-only local diagnostics. Built-in Qt batch workers use fresh
+  processes; interactive ARAP uses a restartable persistent process with
+  negligible measured warm overhead. The process-local lock remains defense in
+  depth inside workers. Third-party callable isolation awaits a plugin registry.</li>
+</ul>
+<p><strong>Exit gate:</strong> a new Kubuntu environment can install, launch, and exercise the
+core without an Image-Toolkit checkout or undocumented imports.</p>
+<h2 id="phase-1-krita-learning-alpha">Phase 1 — Krita learning alpha</h2>
+<p>The first curriculum teaches one consistent anime head-and-face construction
+method. See <a href="../roadmaps/krita_learning_alpha/">Krita Learning Alpha</a>.</p>
+<p>The complete loop is: lesson → guided exercise → draw in Krita → request review
+→ receive explanation and redline → preview a suggestion → accept/reject →
+repeat → compare progress.</p>
+<p><strong>Exit gate:</strong> a small beginner study demonstrates both improved repeated
+attempts and useful explanations. Feature count alone cannot satisfy this gate.</p>
+<h2 id="phase-2-reference-consistent-coloring">Phase 2 — reference-consistent coloring</h2>
+<p>Build a character style bible and correction-oriented coloring workflow after
+the learning loop is polished. See
+<a href="../roadmaps/reference_coloring/">Reference-Consistent Coloring</a>.</p>
+<p>Milestones 1–3 are done and live-Krita verified: segmentation/gap-repair
+(G1, issue #19), the character style-bible format and palette application
+(C1/C2/C3, issues #15/#16/#17), and the manual correspondence/propagation
+baseline (C4/C4.1, issues #18/#21). Milestone 4 (assisted correspondence
+with confidence and correction learning, issue #24) is In review pending a
+live Krita checklist: deterministic confidence signals (no ML yet) and a
+multiplicative-weights correction-learning step, per explicit scoping, now
+wired into the Character Colors Docker's confidence-ranked material
+dropdown — see the milestone-4 section of
+<a href="../roadmaps/reference_coloring/">Reference-Consistent Coloring</a> for the
+full design and constraints.</p>
+<p>The existing scribble, Gabor, optimal-transport, graph-cut, quadtree, and
+preference-log modules remain experimental baselines. Their mathematical
+claims, numerical behavior, output quality, and correction time must be
+benchmarked before promotion to user-facing production tools.</p>
+<h2 id="phase-3-anime-animation-assistance">Phase 3 — anime animation assistance</h2>
+<p>Target the Japanese animation workflow: storyboard/layout, key poses,
+breakdowns, inbetweens, cleanup, color, shading, and compositing. The initial
+emphasis is frame-by-frame limited animation rather than mesh puppeteering.
+See <a href="../roadmaps/anime_animation/">Anime Animation</a>.</p>
+<p>The existing 3D same-coordinate propagation and binary graph-cut refinement
+are research baselines, not a production temporal pipeline. Motion-aware
+correspondence and occlusion handling are prerequisites.</p>
+<h2 id="phase-4-game-assets">Phase 4 — game assets</h2>
+<p>Provide separate 2D and Blender-centered 3D workflows, with Unity and Unreal
+interchange as the first engine integrations. See
+<a href="../roadmaps/game_assets/">Game Assets</a>.</p>
+<h2 id="phase-5-standalone-desktop-editor">Phase 5 — standalone desktop editor</h2>
+<p>🔄 This phase's original gate was conditional: reassess only after the Krita
+plugin proves which workflows require ownership of the canvas, document
+model, rendering engine, or timeline. That precondition has not been met —
+the owner made an explicit decision (2026-08-07) to start this phase now
+anyway, ahead of the gate; see the "Gate 5 exception" note in the
+<a href="../roadmaps/engine_architecture/">Engine Architecture Roadmap</a> for the full
+rationale. This is a scope decision, not evidence Krita has proven
+insufficient — the Krita plugin remains the primary, actively-developed
+host. Twenty-five slices are implemented, all In review: the first (issue #25 —
+a PySide6 canvas + layer-stack foundation in the existing <code>gui/</code> workspace
+member, backed by a new pure-numpy <code>logic/src/editor/</code> package), the second
+(issue #26 — a brush paint tool: pure-numpy circular stamping in
+<code>logic/src/editor/brush.py</code>, a Pan/Brush tool switch, and color/size controls),
+the third (issue #27 — snapshot-based undo/redo in
+<code>logic/src/editor/history.py</code>, one checkpoint per stroke or structural mutation),
+the fourth (issue #28 — non-destructive per-layer grayscale masks that
+attenuate compositing, with their own Add/Remove Mask controls and a
+mask-painting brush mode), the fifth (issue #29 — line-art gap closing
+and region segmentation, reusing <code>colorization.segmentation</code> directly
+rather than reimplementing it, unlike the Krita plugin's numpy-free
+mirror), the sixth (issue #30 — style-bible palette application,
+reusing <code>colorization.style_bible</code> directly: bind a bible, pick a
+material/role, and recolor any selected layer's opaque pixels), the
+seventh (issue #31 — region-to-material correspondence assignment,
+reusing <code>colorization.correspondence</code>/<code>colorization.confidence</code> directly:
+a Suggest Material button ranks materials by deterministic confidence
+using region adjacency, and an Assign Correspondence button records the
+chosen material as that region's correspondence in an in-memory set, no
+correction learning yet), the eighth (issue #32 — canvas document
+save/load: <code>.npy</code>-per-layer plus a manifest, with the correspondence set
+and region-layer bookkeeping saved alongside via Save Document/Open
+Document buttons, so a canvas now survives closing the app; still no
+<code>logic/src/project</code> integration), the ninth (issue #33 — bounded
+recovery-revision rotation for canvas documents on save, matching
+<code>colorization.correspondence</code>/<code>colorization.style_bible</code>'s existing
+<code>.recovery/</code> contract for their own JSON assets), the tenth
+(issue #34 — binding a portable <code>project</code> for <code>SignalWeights</code>
+correction learning: New Project/Bind Project buttons, plus
+project-aware Suggest Material/Assign Correspondence that fall back to
+the seventh slice's fixed-weight in-memory behavior when no project is
+bound), the eleventh (issue #35 — attaching canvas documents
+themselves into a bound project via <code>attach_editor_document</code>/a new
+<code>Project.editor_document_assets</code> list, whenever Save Document targets a
+path inside the bound project's directory), the twelfth (issue #36
+— Project Documents/Project Bibles combo boxes plus Open Selected
+Document/Load Selected Bible buttons, so a bound project's already-
+attached assets can be reopened/reloaded without re-navigating a file
+dialog each time), the thirteenth (issue #37 — a soft/anti-aliased
+brush hardness option, <code>stamp_dot_soft</code>/<code>stamp_line_soft</code> alongside the
+existing hard <code>stamp_dot</code>/<code>stamp_line</code>, defaulting to fully hard so
+prior behavior is unchanged), the fourteenth (issue #38 — an
+eraser tool, <code>erase_dot</code>/<code>erase_line</code>, sharing the brush's radius/
+hardness controls but reducing alpha instead of painting a color), and
+the fifteenth (issue #39 — per-layer opacity/blend mode UI in
+<code>LayerListPanel</code>, exposing <code>LayerMeta</code> fields <code>composite()</code> has used
+since the first slice but that never had any UI control), and the
+sixteenth (issue #40 — a Propagate Correspondence button bringing the
+Krita Character Colors Docker's milestone C4.1 propagation action to
+the standalone editor, via <code>CorrespondenceSet.propagate</code> directly), and
+the seventeenth (issue #49 — Detach Selected Document/Detach Selected
+Bible buttons, the missing reverse of the attach side slices 11/12
+wired, using <code>project.detach_editor_document</code>/<code>detach_style_bible</code>), and
+the eighteenth (issue #50 — loading a bound project's existing
+correspondence set on bind, so reopening a project no longer silently
+loses its correspondence assignments until the next Assign/Propagate
+Correspondence save, via <code>colorization.correspondence.load_correspondence_set</code>
+in <code>ReferenceColoringTab._refresh_project_asset_combos</code>), and the
+nineteenth (issue #51 — New Canvas resets <code>_correspondence_set</code> and
+<code>_region_layer_ids</code>, so a fresh blank canvas can no longer inherit a
+prior document's stale correspondence assignments), and the twentieth (issue</p>
+<h1 id="52-export-png-flattens-the-visible-layer-stack-including-masks-opacity">52 — Export PNG flattens the visible layer stack, including masks, opacity,</h1>
+<p>and blend modes, into a transparent RGBA PNG without altering the editable
+document), the twenty-first (issue #53 — Import Image Layer loads a
+dimension-matched RGBA image as a new undoable editable layer), and the
+twenty-second (issue #54 — Duplicate Layer copies pixels, masks, metadata, and
+stack placement into a newly selected undoable layer), and the twenty-third
+(issue #55 — Rename Layer changes the selected layer's name without altering
+pixels and is undoable), and the twenty-fourth (issue #56 — Clear Layer
+zeroes selected pixels and masks in one undoable mutation while retaining
+layer metadata), and the twenty-fifth (issue #57 — Merge Down flattens the
+selected layer with the one below through the existing compositor and is
+undoable).
+The likely long-term architecture is still a C++ engine, GPU-backed
+canvas, and isolated Python research/model workers; its staged boundary and
+migration gates are defined in the same document. Browser support is not a
+justification for choosing the desktop architecture.</p>
+<h2 id="deferred-clients">Deferred clients</h2>
+<ul>
+<li>Freeze the Tauri frontend scaffold; do not build a second incomplete UI.</li>
+<li>Freeze Android and iOS scaffolds.</li>
+<li>If mobile resumes, target full tablet editing rather than a review-only
+  companion, after desktop document and engine contracts are stable.</li>
+</ul>
+<h2 id="automation-levels">Automation levels</h2>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Manual tools</td>
+<td>Analysis and ML assistance disabled</td>
+</tr>
+<tr>
+<td>Tutor only</td>
+<td>Explanations and redlines; no modified-art preview</td>
+</tr>
+<tr>
+<td>Suggest</td>
+<td>Preview available only after an explicit review request</td>
+</tr>
+<tr>
+<td>Guided assist</td>
+<td>Suggestions may appear at suitable checkpoints</td>
+</tr>
+<tr>
+<td>Batch assist</td>
+<td>Multiple coloring/animation proposals queued for review</td>
+</tr>
+</tbody>
+</table>
+<p>All levels preserve the original, require acceptance before modifying artwork,
+and use ordinary undoable Krita/application commands. The accept shortcut must
+be configurable because Krita already assigns Tab to canvas-only mode.</p>
+<h2 id="evaluation-hierarchy">Evaluation hierarchy</h2>
+<ol>
+<li>Improvement between repeated attempts.</li>
+<li>Helpfulness and correctness of teaching explanations.</li>
+<li>Time and number of manual corrections required.</li>
+<li>Interaction latency and stability.</li>
+<li>Conventional image/model metrics, used only where they reflect the workflow.</li>
+</ol>
+<h2 id="licensing-and-model-policy">Licensing and model policy</h2>
+<p>The project remains AGPL-3.0 with a commercial licensing option. It should
+publish provenance and license metadata for supplied models and datasets while
+allowing users to install arbitrary local models. Unverified models must be
+clearly distinguished from built-in validated packages.</p>
+<h2 id="decision-record">Decision record</h2>
+<p>This roadmap incorporates the product review and owner brainstorming of
+2026-08-06. Data under <code>~/Downloads/Data</code> is explicitly out of scope until it
+is separately inventoried; no roadmap assumption is based on its contents.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "navigation.indexes", "search.highlight", "search.suggest", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
