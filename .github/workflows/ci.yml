@@ -15,7 +15,7 @@ jobs:
   lint-test-src:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: astral-sh/setup-uv@v5
       - run: uv sync --all-packages --all-extras --dev
       - run: uv run ruff check logic/src logic/test
@@ -40,7 +40,7 @@ jobs:
   lint-test-gui:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: astral-sh/setup-uv@v5
       - run: uv sync --all-packages --all-extras --dev
       - run: uv run --package cel-shaded-generator-gui ruff check gui
