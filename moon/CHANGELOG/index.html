@@ -1413,6 +1413,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#added" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Added
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#changed" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1446,7 +1457,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#added" class="md-nav__link">
+  <a href="#added_1" class="md-nav__link">
     <span class="md-ellipsis">
       
         Added
@@ -1496,7 +1507,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#added_1" class="md-nav__link">
+  <a href="#added_2" class="md-nav__link">
     <span class="md-ellipsis">
       
         Added
@@ -1706,6 +1717,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#added" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Added
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#changed" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1739,7 +1761,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#added" class="md-nav__link">
+  <a href="#added_1" class="md-nav__link">
     <span class="md-ellipsis">
       
         Added
@@ -1789,7 +1811,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#added_1" class="md-nav__link">
+  <a href="#added_2" class="md-nav__link">
     <span class="md-ellipsis">
       
         Added
@@ -1829,6 +1851,63 @@
 <p>The format is based on <a href="https://keepachangelog.com/en/1.1.0/">Keep a Changelog</a>,
 and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
 <h2 id="unreleased">[Unreleased]</h2>
+<h3 id="added">Added</h3>
+<ul>
+<li>
+<p><strong>Bugfix: <code>platform.py</code> shadow shadowed stdlib <code>platform</code> in subprocess
+  workers (2026-08-17, Gemini).</strong> <code>gui/src/platform.py</code> was importable as
+  the bare top-level name <code>platform</code> because pytest adds <code>gui/src</code> to
+  <code>sys.path</code> (via <code>pythonpath = ["src", ...]</code> in <code>gui/pyproject.toml</code>).
+  ARAP solver tests spawn subprocess workers that re-bootstrap pytest; those
+  subprocesses imported the local <code>platform.py</code> instead of the stdlib module,
+  causing <code>uuid.py</code>'s <code>platform.system()</code> call to raise <code>AttributeError</code>
+  and crashing all 7 <code>test_mesh_overlay_editor</code> / <code>test_puppeteering_tab</code>
+  tests. Fixed by renaming <code>gui/src/platform.py</code> → <code>gui/src/qt_platform.py</code>
+  and updating the 3 tab importers (<code>animation_tab</code>, <code>colorization_tab</code>,
+  <code>puppeteering_tab</code>) and the <code>test_package.py</code> test. The new module
+  docstring explains the naming choice to prevent future regressions.
+  Outcome: 233/233 GUI tests pass; 564/564 logic tests pass.</p>
+</li>
+<li>
+<p><strong>Bugfix: GUI test suite regression (2026-08-17, Gemini).</strong> Fixed four
+  failing tests in <code>gui/test/tabs/test_reference_coloring_tab.py</code> introduced
+  by editor slices #53–#57:</p>
+</li>
+<li><code>test_export_png_writes_flattened_rgba_composite</code>: <code>QImage.save()</code> was
+    called with <code>b"PNG"</code> (bytes) where PySide6 requires a <code>str</code>; fixed to
+    <code>"PNG"</code> in <code>reference_coloring_tab._export_png</code>.</li>
+<li>
+<p><code>test_rename_selected_layer_updates_list_and_is_undoable</code>,
+    <code>test_clear_selected_layer_clears_pixels_and_mask_and_is_undoable</code>,
+    <code>test_merge_selected_layer_down_is_undoable</code>: tests manually wired
+    <code>EditHistory</code> to the canvas and layer panel but omitted <code>tab._history</code>,
+    so <code>tab._undo()</code> short-circuited and never fired. Added the missing
+    <code>tab._history = history</code> assignment in each test, matching what
+    <code>_new_canvas</code> does. The clear-layer test also fixed a stale <code>Layer</code>
+    reference post-undo — <code>load_state</code> replaces the <code>_layers</code> list with new
+    <code>Layer</code> objects, so assertions after undo must re-query via
+    <code>stack.layer("source")</code> rather than holding the pre-undo reference.
+  Outcome: 226 GUI tests pass (7 pre-existing puppeteering/mesh-overlay
+  failures, unrelated to the editor slices, remain).</p>
+</li>
+<li>
+<p><strong>Issue #23: heavy Docker computations moved off the Krita UI thread
+  (2026-08-17, deepseek).</strong> New <code>engine_worker.py</code>: <code>EngineWorker</code> (a
+  <code>QThread</code> subclass running one zero-arg callable off the UI thread,
+  mirroring the parent repo's worker convention) plus <code>WorkerBusyMixin</code>
+  (routes a Docker's button handlers through the worker, disabling buttons
+  for the duration and re-enabling via a busy counter across chained calls).
+  <code>SegmentationDocker</code>, <code>ColorDocker</code>, and <code>ChapterDocker</code> all route their
+  pure-Python per-pixel buffer computations and engine subprocess round
+  trips through it; Krita's document/node API stays on the UI thread —
+  pixel extraction and any document mutation still happen there, only the
+  pure computation moves off it. Tests:
+  <code>test_krita_engine_worker.py</code>, <code>test_krita_segmentation_docker.py</code>,
+  <code>test_krita_color_docker_worker.py</code>, extended
+  <code>test_krita_chapter_docker.py</code>/<code>test_krita_color_docker_adjacency.py</code>
+  (36 passed total).</p>
+</li>
+</ul>
 <h3 id="changed">Changed</h3>
 <ul>
 <li>
@@ -1975,7 +2054,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
   every other creation path does. Verification: 392 tests pass; Ruff and
   core mypy are clean.</li>
 </ul>
-<h3 id="added">Added</h3>
+<h3 id="added_1">Added</h3>
 <ul>
 <li>
 <p><strong>Standalone editor Merge Down (issue #57, In review).</strong> The layer panel
@@ -3183,7 +3262,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li>Moved <code>docker/</code> to <code>infra/docker/</code> to make room for other infra-as-code stacks; updated all referencing files.</li>
 </ul>
 <h2 id="010-2026-07-30">[0.1.0] — 2026-07-30</h2>
-<h3 id="added_1">Added</h3>
+<h3 id="added_2">Added</h3>
 <ul>
 <li>Repository created from scratch as a GitHub template.</li>
 </ul>
