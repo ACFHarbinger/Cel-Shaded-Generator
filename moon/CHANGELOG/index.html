@@ -1413,6 +1413,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#fixed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#added" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1446,7 +1457,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#fixed" class="md-nav__link">
+  <a href="#fixed_1" class="md-nav__link">
     <span class="md-ellipsis">
       
         Fixed
@@ -1717,6 +1728,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#fixed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#added" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1750,7 +1772,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#fixed" class="md-nav__link">
+  <a href="#fixed_1" class="md-nav__link">
     <span class="md-ellipsis">
       
         Fixed
@@ -1851,6 +1873,10 @@
 <p>The format is based on <a href="https://keepachangelog.com/en/1.1.0/">Keep a Changelog</a>,
 and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
 <h2 id="unreleased">[Unreleased]</h2>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li><strong>Root justfile completely broken (2026-08-20, Claude).</strong> <code>build</code>/<code>test</code>/<code>docs</code>/<code>bench</code> were each declared as both a <code>mod</code> import (<code>tools/*/justfile</code>) and a shorthand recipe of the same name — <code>just</code> refuses to parse a file with that collision, so <em>every</em> <code>just</code> command in this repo failed at parse time, not just those four. Renamed the shorthand recipes to <code>build-all</code>/<code>test-all</code>/<code>docs-build</code>/<code>bench-all</code> (matching the convention already used in the parent Image-Toolkit and sibling ASP justfiles) and updated the stale <code>just test</code>/<code>just docs</code> references in <code>tools/ci/justfile</code>, <code>tools/dev/justfile</code>, <code>.agent/skills/build-and-test.md</code>, and every PR/MR template. Verified: <code>just --list</code> now works; <code>logic/test</code> (564) and <code>gui/test</code> (233) both pass 797/797 when run directly with <code>uv run pytest</code>. Two further pre-existing justfile plumbing bugs this surfaced (previously invisible since nothing via <code>just</code> ran at all) — <code>just lint</code>'s <code>cd gui</code> failing and <code>just test-all</code>'s <code>uv run pytest logic/test</code> resolving against Image-Toolkit's rootdir instead of CSG's own — are filed separately, not fixed here.</li>
+</ul>
 <h3 id="added">Added</h3>
 <ul>
 <li>
@@ -1982,7 +2008,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
   desktop-app check (see the <code>### Added</code> entries below).
   (see the <code>### Added</code> entries below).</li>
 </ul>
-<h3 id="fixed">Fixed</h3>
+<h3 id="fixed_1">Fixed</h3>
 <ul>
 <li>Ran a proactive high-effort code review of <code>docker.py</code> (the original tutor
   Docker, A1; largest and oldest Docker file, still backing the
